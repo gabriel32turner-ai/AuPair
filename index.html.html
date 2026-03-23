@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#3D1F6E">
+<title>AuPair Bajío — ¿Es para ti?</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,400&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap');
+
+/* ─── RESET ──────────────────────────────────────────── */
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{
+  --p:#6B3FA0;--pd:#3D1F6E;--pl:#F3EEFF;
+  --mg:#D63384;--tl:#00B4A6;
+  --bg:#FAF8FF;--text:#1a1a2e;--muted:#7a7a9a;
+  --bd:#E2D9F3;--wh:#fff;
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:'DM Sans',Arial,sans-serif;
+  background:var(--bg);color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+a{text-decoration:none;color:inherit}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+img{display:block;max-width:100%}
+
+/* ─── STRIPE ─────────────────────────────────────────── */
+.stripe{height:4px;background:linear-gradient(90deg,var(--p),var(--mg),var(--tl),var(--mg),var(--p))}
+
+/* ─── HERO ───────────────────────────────────────────── */
+.hero{
+  background:linear-gradient(160deg,#3D1F6E 0%,#5a2e90 45%,#c23080 100%);
+  padding:60px 22px 56px;
+  position:relative;overflow:hidden;
+  min-height:100vh;
+  display:flex;flex-direction:column;justify-content:center;
+}
+.hero-glow1{
+  position:absolute;width:300px;height:300px;border-radius:50%;
+  background:var(--mg);top:-100px;right:-80px;
+  filter:blur(80px);opacity:.3;pointer-events:none;
+}
+.hero-glow2{
+  position:absolute;width:220px;height:220px;border-radius:50%;
+  background:var(--tl);bottom:-70px;left:-70px;
+  filter:blur(70px);opacity:.25;pointer-events:none;
+}
+.hero-brand{display:flex;align-items:center;gap:10px;margin-bottom:32px;position:relative}
+.brand-dot{
+  width:38px;height:38px;border-radius:50%;
+  background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
+  display:flex;align-items:center;justify-content:center;font-size:18px;
+}
+.brand-name{font-family:'Fraunces',Georgia,serif;font-weight:900;font-size:16px;color:#fff}
+.brand-name span{color:var(--tl)}
+.hero-eyebrow{
+  font-size:10px;letter-spacing:3px;text-transform:uppercase;
+  color:rgba(255,255,255,.5);margin-bottom:14px;
+  display:flex;align-items:center;gap:8px;position:relative;
+}
+.hero-eyebrow::before{content:'';width:24px;height:1.5px;background:var(--tl);flex-shrink:0}
+.hero-h1{
+  font-family:'Fraunces',Georgia,serif;
+  font-size:56px;font-weight:900;color:#fff;
+  line-height:.92;letter-spacing:-2px;
+  margin-bottom:10px;position:relative;
+}
+.hero-h1 em{
+  font-style:italic;font-weight:300;
+  color:transparent;
+  -webkit-text-stroke:1.5px rgba(255,255,255,.55);
+}
+.hero-dest{
+  font-family:'Fraunces',Georgia,serif;
+  font-size:22px;font-weight:700;color:var(--tl);
+  margin-bottom:22px;position:relative;
+}
+.hero-tagline{
+  font-size:15px;line-height:1.75;
+  color:rgba(255,255,255,.78);
+  margin-bottom:32px;position:relative;
+  max-width:320px;
+}
+.hero-tagline strong{color:#fff}
+.stats{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;background:rgba(255,255,255,.15);
+  border-radius:16px;overflow:hidden;
+  margin-bottom:28px;position:relative;
+}
+.stat{
+  background:rgba(255,255,255,.08);
+  padding:16px 8px;text-align:center;
+}
+.stat-n{
+  font-family:'Fraunces',Georgia,serif;
+  font-size:24px;font-weight:900;color:#fff;
+  line-height:1;margin-bottom:5px;
+}
+.stat-n span{color:var(--tl)}
+.stat-l{font-size:10px;color:rgba(255,255,255,.5);line-height:1.3}
+.hero-btns{display:flex;flex-direction:column;gap:12px;position:relative}
+.btn-green{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  background:linear-gradient(135deg,#25D366,#128C7E);
+  color:#fff;font-weight:700;font-size:16px;
+  padding:18px 22px;border-radius:14px;
+  box-shadow:0 8px 28px rgba(37,211,102,.35);
+}
+.btn-green:active{opacity:.88;transform:scale(.98)}
+.btn-outline{
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.25);
+  color:rgba(255,255,255,.85);
+  font-size:14px;font-weight:500;
+  padding:15px 22px;border-radius:14px;
+}
+.btn-outline:active{background:rgba(255,255,255,.18)}
+.scroll-hint{
+  margin-top:28px;position:relative;
+  font-size:11px;letter-spacing:1.5px;text-transform:uppercase;
+  color:rgba(255,255,255,.3);
+  display:flex;align-items:center;gap:8px;
+}
+
+/* ─── SECTION BASE ───────────────────────────────────── */
+.sec{padding:52px 22px}
+.eyebrow{
+  font-size:9px;letter-spacing:3px;text-transform:uppercase;
+  color:var(--mg);font-weight:700;margin-bottom:10px;
+  display:flex;align-items:center;gap:8px;
+}
+.eyebrow::before{content:'';width:18px;height:1.5px;background:var(--mg);flex-shrink:0}
+.sec-h{
+  font-family:'Fraunces',Georgia,serif;
+  font-size:32px;font-weight:900;
+  color:var(--pd);line-height:1.05;margin-bottom:8px;
+}
+.sec-sub{font-size:14px;color:var(--muted);margin-bottom:26px;line-height:1.65}
+
+/* ─── QUIZ ───────────────────────────────────────────── */
+.sec-quiz{background:linear-gradient(160deg,#1a0a2e,#3D1F6E)}
+.sec-quiz .eyebrow{color:var(--tl)}
+.sec-quiz .eyebrow::before{background:var(--tl)}
+.sec-quiz .sec-h{color:#fff}
+.sec-quiz .sec-sub{color:rgba(255,255,255,.5)}
+.qprog{
+  height:5px;background:rgba(255,255,255,.1);
+  border-radius:10px;overflow:hidden;margin-bottom:28px;
+}
+.qprog-fill{
+  height:100%;width:33%;
+  background:linear-gradient(90deg,var(--mg),var(--tl));
+  border-radius:10px;
+  transition:width .4s ease;
+}
+.quiz-box{}
+.q-num{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:8px}
+.q-emoji{font-size:36px;display:block;margin-bottom:10px}
+.q-txt{
+  font-family:'Fraunces',Georgia,serif;
+  font-size:22px;font-weight:700;color:#fff;
+  line-height:1.3;margin-bottom:22px;
+}
+.q-opts{display:flex;flex-direction:column;gap:11px}
+.q-opt{
+  background:rgba(255,255,255,.08);
+  border:1.5px solid rgba(255,255,255,.14);
+  border-radius:14px;padding:17px 18px;
+  font-size:15px;font-weight:500;
+  color:rgba(255,255,255,.85);
+  text-align:left;width:100%;
+  display:flex;align-items:center;gap:13px;
+  transition:background .15s,border-color .15s;
+}
+.q-opt:active,.q-opt.sel{
+  background:rgba(214,51,132,.28);
+  border-color:var(--mg);color:#fff;
+}
+.q-opt-icon{font-size:22px;flex-shrink:0}
+/* result */
+.result{text-align:center;padding:6px 0 14px}
+.result-badge{
+  width:86px;height:86px;border-radius:50%;
+  background:linear-gradient(135deg,var(--mg),var(--tl));
+  display:flex;align-items:center;justify-content:center;
+  font-size:40px;margin:0 auto 18px;
+  animation:pop .45s cubic-bezier(.175,.885,.32,1.275) both;
+}
+@keyframes pop{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
+.result-ttl{
+  font-family:'Fraunces',Georgia,serif;
+  font-size:28px;font-weight:900;color:#fff;margin-bottom:10px;
+}
+.result-txt{font-size:14px;color:rgba(255,255,255,.65);line-height:1.75;margin-bottom:26px}
+.result-btns{display:flex;flex-direction:column;gap:11px}
+.btn-reset{
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.18);
+  color:rgba(255,255,255,.7);
+  padding:14px;border-radius:12px;font-size:14px;
+}
+.btn-reset:active{background:rgba(255,255,255,.15)}
+
+/* ─── DESTINOS ───────────────────────────────────────── */
+.sec-dest{background:#fff}
+.dest-tabs{
+  display:flex;gap:9px;
+  overflow-x:auto;padding-bottom:4px;
+  margin-bottom:20px;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+}
+.dest-tabs::-webkit-scrollbar{display:none}
+.dest-tab{
+  flex-shrink:0;
+  background:var(--pl);border:1.5px solid var(--bd);
+  border-radius:12px;padding:10px 20px;
+  font-size:14px;font-weight:600;color:var(--p);
+  transition:all .2s;
+}
+.dest-tab.on{
+  background:linear-gradient(135deg,var(--pd),var(--mg));
+  border-color:transparent;color:#fff;
+}
+.dest-tab:active:not(.on){background:var(--bd)}
+.dest-pane{display:none}
+.dest-pane.on{display:block}
+.dest-card{
+  background:linear-gradient(140deg,var(--pd),#5a2e90);
+  border-radius:22px;padding:26px 22px;position:relative;overflow:hidden;
+}
+.dest-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--p),var(--mg),var(--tl));
+}
+.dest-flag{font-size:44px;margin-bottom:12px;display:block}
+.dest-country{
+  font-family:'Fraunces',Georgia,serif;
+  font-size:28px;font-weight:900;color:#fff;margin-bottom:4px;
+}
+.dest-tag{font-size:13px;color:var(--tl);font-style:italic;margin-bottom:20px}
+.dest-list{list-style:none;display:flex;flex-direction:column;gap:11px;margin-bottom:20px}
+.dest-li{display:flex;gap:11px;align-items:flex-start;font-size:14px;color:rgba(255,255,255,.82);line-height:1.45}
+.dest-li-icon{font-size:17px;flex-shrink:0;margin-top:1px}
+.dest-li strong{color:#fff}
+.dest-top{
+  background:rgba(214,51,132,.15);border:1px solid rgba(214,51,132,.35);
+  border-radius:12px;padding:14px 16px;
+  display:flex;gap:12px;align-items:flex-start;margin-bottom:16px;
+}
+.dest-top-badge{
+  background:var(--mg);color:#fff;font-size:9px;font-weight:700;
+  letter-spacing:1.5px;text-transform:uppercase;
+  padding:4px 8px;border-radius:4px;flex-shrink:0;white-space:nowrap;margin-top:2px;
+}
+.dest-top-txt{font-size:13px;color:rgba(255,255,255,.85);line-height:1.55}
+.dest-top-txt strong{color:#fff}
+.dest-hl{
+  background:rgba(0,180,166,.15);border:1px solid rgba(0,180,166,.3);
+  border-radius:14px;padding:17px 18px;
+  display:flex;gap:14px;align-items:center;
+}
+.dest-hl-val{
+  font-family:'Fraunces',Georgia,serif;
+  font-size:32px;font-weight:900;color:var(--tl);line-height:1;flex-shrink:0;
+}
+.dest-hl-desc{font-size:12.5px;color:rgba(255,255,255,.6);line-height:1.55}
+
+/* ─── HONESTY ────────────────────────────────────────── */
+.sec-honest{background:var(--bg)}
+.cards{display:flex;flex-direction:column;gap:13px}
+.hcard{
+  background:#fff;border:1px solid var(--bd);
+  border-radius:16px;padding:18px;
+  display:flex;gap:14px;align-items:flex-start;
+}
+.hcard-icon{
+  width:44px;height:44px;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:22px;flex-shrink:0;
+}
+.hcard-icon.g{background:rgba(0,180,166,.1)}
+.hcard-icon.o{background:rgba(251,191,36,.1)}
+.hcard-ttl{font-weight:700;font-size:14.5px;color:var(--pd);margin-bottom:4px}
+.hcard-txt{font-size:13px;color:var(--muted);line-height:1.55}
+
+/* ─── VICKY ──────────────────────────────────────────── */
+.sec-vicky{
+  background:linear-gradient(160deg,var(--pd),#5a2e90);
+  position:relative;overflow:hidden;
+}
+.sec-vicky::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 70% 50% at 90% 20%,rgba(0,180,166,.15),transparent 60%);
+  pointer-events:none;
+}
+.sec-vicky .eyebrow{color:var(--tl)}
+.sec-vicky .eyebrow::before{background:var(--tl)}
+.sec-vicky .sec-h{color:#fff}
+.vq-mark{
+  font-family:'Fraunces',Georgia,serif;
+  font-size:90px;font-weight:900;
+  color:rgba(255,255,255,.07);line-height:.7;margin-bottom:-10px;
+}
+.vq-txt{
+  font-size:17px;font-style:italic;line-height:1.8;
+  color:rgba(255,255,255,.9);margin-bottom:26px;position:relative;
+}
+.vsig{display:flex;align-items:center;gap:13px;margin-bottom:22px;position:relative}
+.vavatar{
+  width:52px;height:52px;border-radius:50%;
+  background:linear-gradient(135deg,var(--mg),var(--p));
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Fraunces',Georgia,serif;font-weight:900;font-size:22px;color:#fff;flex-shrink:0;
+}
+.vname{font-family:'Fraunces',Georgia,serif;font-weight:900;font-size:17px;color:#fff}
+.vrole{font-size:12px;color:rgba(255,255,255,.45);margin-top:2px}
+.badges{display:flex;gap:8px;flex-wrap:wrap;position:relative}
+.badge{
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);
+  border-radius:8px;padding:8px 13px;
+  font-size:12px;color:rgba(255,255,255,.6);
+  display:flex;align-items:center;gap:7px;
+}
+
+/* ─── TESTIMONIOS ────────────────────────────────────── */
+.sec-testi{background:#fff}
+.sec-testi-inner{padding:0 22px 20px}
+.tscroll{
+  display:flex;gap:14px;
+  overflow-x:auto;padding:0 22px 12px;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+  scroll-snap-type:x mandatory;
+}
+.tscroll::-webkit-scrollbar{display:none}
+.tcard{
+  flex-shrink:0;width:272px;
+  background:var(--pl);border:1px solid var(--bd);
+  border-radius:18px;padding:20px 17px;
+  scroll-snap-align:start;
+}
+.tstars{font-size:13px;letter-spacing:2px;color:#FBBF24;margin-bottom:10px}
+.ttxt{font-size:13.5px;color:var(--muted);line-height:1.65;font-style:italic;margin-bottom:14px}
+.tperson{display:flex;align-items:center;gap:10px}
+.tavatar{
+  width:36px;height:36px;border-radius:50%;
+  background:linear-gradient(135deg,var(--p),var(--mg));
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;flex-shrink:0;
+}
+.tname{font-size:13px;font-weight:700;color:var(--pd)}
+.tdest{font-size:11px;color:var(--tl)}
+.tdots{display:flex;justify-content:center;gap:7px;padding:4px 0 0}
+.tdot{
+  width:7px;height:7px;border-radius:50%;
+  background:var(--bd);transition:all .3s;cursor:pointer;
+}
+.tdot.on{width:22px;border-radius:4px;background:var(--p)}
+
+/* ─── REQUISITOS ─────────────────────────────────────── */
+.sec-req{background:linear-gradient(180deg,var(--pd),#5a2e90)}
+.sec-req .eyebrow{color:var(--tl)}
+.sec-req .eyebrow::before{background:var(--tl)}
+.sec-req .sec-h{color:#fff}
+.sec-req .sec-sub{color:rgba(255,255,255,.55)}
+.reqs{display:flex;flex-direction:column;gap:11px}
+.ritem{
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);
+  border-radius:14px;padding:17px 18px;
+  display:flex;align-items:flex-start;gap:14px;
+}
+.rcheck{
+  width:30px;height:30px;border-radius:50%;
+  background:rgba(0,180,166,.2);border:1.5px solid var(--tl);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;font-size:14px;margin-top:1px;color:var(--tl);
+  font-weight:700;
+}
+.rttl{font-weight:700;font-size:15px;color:#fff;margin-bottom:3px}
+.rnote{font-size:12px;color:rgba(255,255,255,.5);line-height:1.45}
+
+/* ─── CTA FINAL ──────────────────────────────────────── */
+.sec-cta{
+  background:linear-gradient(160deg,var(--pd),#c23080);
+  padding:64px 22px 80px;text-align:center;
+  position:relative;overflow:hidden;
+}
+.sec-cta::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 70% 50% at 50% 0%,rgba(0,180,166,.2),transparent 70%);
+  pointer-events:none;
+}
+.sec-cta .eyebrow{color:var(--tl);justify-content:center}
+.sec-cta .eyebrow::before{display:none}
+.cta-h{
+  font-family:'Fraunces',Georgia,serif;
+  font-size:42px;font-weight:900;color:#fff;
+  line-height:.97;margin-bottom:16px;letter-spacing:-1.5px;
+  position:relative;
+}
+.cta-h em{
+  font-style:italic;font-weight:300;color:transparent;
+  -webkit-text-stroke:1.5px rgba(255,255,255,.55);
+}
+.cta-sub{
+  font-size:15px;color:rgba(255,255,255,.72);
+  line-height:1.72;margin-bottom:36px;position:relative;
+}
+.cta-wa{
+  display:flex;align-items:center;justify-content:center;gap:13px;
+  background:linear-gradient(135deg,#25D366,#128C7E);
+  color:#fff;font-weight:700;font-size:17px;
+  padding:20px 26px;border-radius:16px;
+  box-shadow:0 12px 36px rgba(37,211,102,.38);
+  margin-bottom:22px;position:relative;
+}
+.cta-wa:active{opacity:.88;transform:scale(.97)}
+.cta-wa svg{width:26px;height:26px;flex-shrink:0}
+.cta-info{display:flex;flex-direction:column;gap:10px;position:relative}
+.cta-line{font-size:13px;color:rgba(255,255,255,.42);display:flex;align-items:center;justify-content:center;gap:8px}
+
+/* ─── FLOAT WA ───────────────────────────────────────── */
+.fwa{
+  position:fixed;bottom:24px;right:20px;
+  width:58px;height:58px;border-radius:50%;
+  background:linear-gradient(135deg,#25D366,#128C7E);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 8px 28px rgba(37,211,102,.45);
+  z-index:999;
+  animation:pulse 2.5s ease-in-out infinite;
+}
+.fwa:active{transform:scale(.9)}
+.fwa svg{width:30px;height:30px}
+@keyframes pulse{
+  0%,100%{box-shadow:0 8px 28px rgba(37,211,102,.4)}
+  50%{box-shadow:0 8px 38px rgba(37,211,102,.7),0 0 0 10px rgba(37,211,102,.08)}
+}
+
+/* ─── NAV ────────────────────────────────────────────── */
+.topnav{
+  position:fixed;top:0;left:0;right:0;z-index:900;
+  background:rgba(61,31,110,.93);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(255,255,255,.1);
+  padding:11px 18px;
+  display:flex;align-items:center;justify-content:space-between;
+  transform:translateY(-100%);
+  transition:transform .32s ease;
+}
+.topnav.vis{transform:translateY(0)}
+.tnav-brand{display:flex;align-items:center;gap:8px}
+.tnav-dot{width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:13px}
+.tnav-name{font-family:'Fraunces',Georgia,serif;font-weight:900;font-size:14px;color:#fff}
+.tnav-name span{color:var(--tl)}
+.tnav-btn{
+  background:linear-gradient(135deg,#25D366,#128C7E);
+  color:#fff;font-size:12px;font-weight:700;
+  padding:8px 14px;border-radius:20px;
+  white-space:nowrap;
+}
+
+/* ─── PROGRESS ───────────────────────────────────────── */
+.ptop{
+  position:fixed;top:0;left:0;height:3px;
+  background:linear-gradient(90deg,var(--mg),var(--tl));
+  z-index:1000;width:0;transition:width .1s;pointer-events:none;
+}
+</style>
+</head>
+<body>
+
+<!-- Progress line -->
+<div class="ptop" id="ptop"></div>
+
+<!-- Nav sticky -->
+<nav class="topnav" id="topnav">
+  <div class="tnav-brand">
+    <div class="tnav-dot">✈️</div>
+    <div class="tnav-name">AuPair <span>Bajío</span></div>
+  </div>
+  <a href="https://wa.me/524611557964?text=Hola%20Vicky!%20Vi%20tu%20info%20de%20AuPair%20Baj%C3%ADo%20%F0%9F%8C%8E" class="tnav-btn" target="_blank">💬 WhatsApp</a>
+</nav>
+
+<!-- ══════════════ HERO ══════════════ -->
+<section class="hero" id="top">
+  <div class="hero-glow1"></div>
+  <div class="hero-glow2"></div>
+
+  <div class="hero-brand">
+    <div class="brand-dot">✈️</div>
+    <div class="brand-name">AuPair <span>Bajío</span></div>
+  </div>
+
+  <div class="hero-eyebrow">Vicky · México · 18 años de experiencia</div>
+
+  <h1 class="hero-h1">Tu vida<br><em>afuera</em><br>te espera.</h1>
+  <div class="hero-dest">Estados Unidos ✈️</div>
+
+  <p class="hero-tagline">
+    Aprende inglés de verdad, <strong>ahorra en dólares</strong> y regresa siendo otra versión de ti. Con visa, vuelo y familia incluidos.
+  </p>
+
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-n">350<span>+</span></div>
+      <div class="stat-l">chicas enviadas</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n">18</div>
+      <div class="stat-l">años de trayectoria</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n">3</div>
+      <div class="stat-l">destinos top</div>
+    </div>
+  </div>
+
+  <div class="hero-btns">
+    <a href="https://wa.me/524611557964?text=Hola%20Vicky!%20Vi%20tu%20info%20sobre%20AuPair%20Baj%C3%ADo%20y%20quiero%20saber%20si%20soy%20candidata%20%F0%9F%8C%8E" class="btn-green" target="_blank">
+      💬 Quiero saber si califico
+    </a>
+    <a href="#quiz" class="btn-outline">Descúbrelo aquí primero ↓</a>
+  </div>
+
+  <div class="scroll-hint">↓ &nbsp;Desliza para conocer más</div>
+</section>
+
+<div class="stripe"></div>
+
+<!-- ══════════════ QUIZ ══════════════ -->
+<section class="sec sec-quiz" id="quiz">
+  <div class="eyebrow">Test rápido</div>
+  <h2 class="sec-h">¿Eres candidata<br>AuPair?</h2>
+  <p class="sec-sub">3 preguntas. 30 segundos.</p>
+  <div class="qprog"><div class="qprog-fill" id="qbar"></div></div>
+  <div id="qbox"></div>
+</section>
+
+<div class="stripe"></div>
+
+<!-- ══════════════ DESTINOS ══════════════ -->
+<section class="sec sec-dest" id="destinos">
+  <div class="eyebrow">Elige tu aventura</div>
+  <h2 class="sec-h">3 países.<br>Millones de razones.</h2>
+
+  <div class="dest-tabs">
+    <button class="dest-tab on" onclick="showDest('usa',this)">🇺🇸 EE.UU.</button>
+    <button class="dest-tab" onclick="showDest('fr',this)">🇫🇷 Francia</button>
+    <button class="dest-tab" onclick="showDest('de',this)">🇩🇪 Alemania</button>
+  </div>
+
+  <!-- EE.UU. -->
+  <div class="dest-pane on" id="dpusa">
+    <div class="dest-card">
+      <span class="dest-flag">🇺🇸</span>
+      <div class="dest-country">Estados Unidos</div>
+      <div class="dest-tag">El destino más solicitado. El que más transforma.</div>
+      <ul class="dest-list">
+        <li class="dest-li"><span class="dest-li-icon">💵</span> Estipendio de <strong>$215 USD</strong> por semana</li>
+        <li class="dest-li"><span class="dest-li-icon">✈️</span> Vuelos redondos incluidos desde México</li>
+        <li class="dest-li"><span class="dest-li-icon">🏠</span> Hospedaje + comidas cubiertos por la familia</li>
+        <li class="dest-li"><span class="dest-li-icon">📚</span> Bono educativo de <strong>$500 USD</strong></li>
+        <li class="dest-li"><span class="dest-li-icon">💳</span> Visa J-1 — estancia legal y protegida</li>
+        <li class="dest-li"><span class="dest-li-icon">🏥</span> Seguro médico incluido</li>
+        <li class="dest-li"><span class="dest-li-icon">👩‍💼</span> Coordinadora de área asignada</li>
+        <li class="dest-li"><span class="dest-li-icon">🏠</span> Familias pre-seleccionadas por la agencia</li>
+      </ul>
+      <div class="dest-top">
+        <div class="dest-top-badge">⭐ TOP</div>
+        <div class="dest-top-txt"><strong>Tour en Nueva York incluido</strong> — una experiencia única antes de llegar con tu familia anfitriona</div>
+      </div>
+      <div class="dest-hl">
+        <div class="dest-hl-val">$11k+</div>
+        <div class="dest-hl-desc">USD en ahorros posibles en un año — con alojamiento y comida cubiertos</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Francia -->
+  <div class="dest-pane" id="dpfr">
+    <div class="dest-card">
+      <span class="dest-flag">🇫🇷</span>
+      <div class="dest-country">Francia</div>
+      <div class="dest-tag">Cultura, idioma y una experiencia europea única.</div>
+      <ul class="dest-list">
+        <li class="dest-li"><span class="dest-li-icon">💶</span> Estipendio en euros pagado por la familia</li>
+        <li class="dest-li"><span class="dest-li-icon">🏠</span> Habitación privada + comidas incluidas</li>
+        <li class="dest-li"><span class="dest-li-icon">📖</span> Clases de francés financiadas</li>
+        <li class="dest-li"><span class="dest-li-icon">🚇</span> Pase de transporte en muchas familias</li>
+        <li class="dest-li"><span class="dest-li-icon">🌍</span> Viaja por Europa en tu tiempo libre</li>
+        <li class="dest-li"><span class="dest-li-icon">🛡️</span> Contrato oficial de trabajo au pair</li>
+      </ul>
+      <div class="dest-hl">
+        <div class="dest-hl-val">€</div>
+        <div class="dest-hl-desc">Ahorra en euros y viaja por toda Europa en tu tiempo libre</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Alemania -->
+  <div class="dest-pane" id="dpde">
+    <div class="dest-card">
+      <span class="dest-flag">🇩🇪</span>
+      <div class="dest-country">Alemania</div>
+      <div class="dest-tag">Orden, oportunidad y un idioma que abre puertas.</div>
+      <ul class="dest-list">
+        <li class="dest-li"><span class="dest-li-icon">💶</span> Estipendio mínimo de €280/mes + extras</li>
+        <li class="dest-li"><span class="dest-li-icon">🏠</span> Habitación privada + comidas incluidas</li>
+        <li class="dest-li"><span class="dest-li-icon">📖</span> Hasta 10 hrs/semana de clases de alemán</li>
+        <li class="dest-li"><span class="dest-li-icon">🚌</span> Pase de transporte público incluido</li>
+        <li class="dest-li"><span class="dest-li-icon">📅</span> 28 días de vacaciones al año</li>
+        <li class="dest-li"><span class="dest-li-icon">🌍</span> Centro de Europa — viaja sin visa adicional</li>
+      </ul>
+      <div class="dest-hl">
+        <div class="dest-hl-val">28d</div>
+        <div class="dest-hl-desc">Días de vacaciones garantizadas para explorar Europa</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stripe"></div>
+
+<!-- ══════════════ HONESTY ══════════════ -->
+<section class="sec sec-honest">
+  <div class="eyebrow">Sin letra chica</div>
+  <h2 class="sec-h">Lo bueno y lo que<br>debes saber.</h2>
+  <p class="sec-sub">Llevamos 18 años siendo honestas. Así de simple.</p>
+  <div class="cards">
+    <div class="hcard">
+      <div class="hcard-icon g">✅</div>
+      <div>
+        <div class="hcard-ttl">Experiencia real que vale</div>
+        <div class="hcard-txt">Vives en una familia, cuidas niños y aprendes un idioma de verdad. No es turismo — es crecimiento profundo.</div>
+      </div>
+    </div>
+    <div class="hcard">
+      <div class="hcard-icon g">✅</div>
+      <div>
+        <div class="hcard-ttl">Dinero que se queda contigo</div>
+        <div class="hcard-txt">Con alojamiento y comida cubiertos, casi todo tu estipendio es ahorro neto. Pocas experiencias tienen esa ventaja.</div>
+      </div>
+    </div>
+    <div class="hcard">
+      <div class="hcard-icon o">⚠️</div>
+      <div>
+        <div class="hcard-ttl">No es vacaciones</div>
+        <div class="hcard-txt">Tendrás horarios, responsabilidades y días difíciles. La adaptación toma tiempo. Si eso no te asusta, entonces sí eres candidata.</div>
+      </div>
+    </div>
+    <div class="hcard">
+      <div class="hcard-icon o">⚠️</div>
+      <div>
+        <div class="hcard-ttl">Hay un proceso real</div>
+        <div class="hcard-txt">Documentos, entrevistas, visa. No es de la noche a la mañana — pero lo hacemos paso a paso contigo.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stripe"></div>
+
+<!-- ══════════════ VICKY ══════════════ -->
+<section class="sec sec-vicky">
+  <div class="eyebrow">Tu guía</div>
+  <h2 class="sec-h">De la mano de alguien<br>que sí sabe.</h2>
+  <div class="vq-mark">"</div>
+  <p class="vq-txt">No te vendo un sueño. Te abro una puerta real — con información honesta, acompañamiento completo y la tranquilidad de que alguien en México está contigo en cada paso del proceso.</p>
+  <div class="vsig">
+    <div class="vavatar">V</div>
+    <div>
+      <div class="vname">Vicky</div>
+      <div class="vrole">Fundadora · AuPair Bajío · 18 años en el programa</div>
+    </div>
+  </div>
+  <div class="badges">
+    <div class="badge">✈️ +350 enviadas</div>
+    <div class="badge">📍 Celaya, Gto.</div>
+    <div class="badge">🔒 18 años</div>
+  </div>
+</section>
+
+<div class="stripe"></div>
+
+<!-- ══════════════ TESTIMONIOS ══════════════ -->
+<section class="sec-testi">
+  <div class="sec-testi-inner">
+    <div class="eyebrow">Ellas ya lo vivieron</div>
+    <h2 class="sec-h">Lo que dicen las<br>que se fueron.</h2>
+  </div>
+  <div class="tscroll" id="tscroll">
+    <div class="tcard">
+      <div class="tstars">★★★★★</div>
+      <p class="ttxt">"Llegué sin saber nada y Vicky me guió en cada paso. Un año en EE.UU. que cambió completamente mi vida."</p>
+      <div class="tperson">
+        <div class="tavatar">🌸</div>
+        <div><div class="tname">Sofía R.</div><div class="tdest">🇺🇸 Maryland</div></div>
+      </div>
+    </div>
+    <div class="tcard">
+      <div class="tstars">★★★★★</div>
+      <p class="ttxt">"Ahorré más de $10k USD en un año. Con eso pagué mi carrera y viajé. Imposible sin AuPair Bajío."</p>
+      <div class="tperson">
+        <div class="tavatar">🌻</div>
+        <div><div class="tname">Daniela M.</div><div class="tdest">🇺🇸 California</div></div>
+      </div>
+    </div>
+    <div class="tcard">
+      <div class="tstars">★★★★★</div>
+      <p class="ttxt">"Francia superó todas mis expectativas. El proceso fue fácil gracias al acompañamiento de Vicky."</p>
+      <div class="tperson">
+        <div class="tavatar">🌷</div>
+        <div><div class="tname">Camila P.</div><div class="tdest">🇫🇷 París</div></div>
+      </div>
+    </div>
+    <div class="tcard">
+      <div class="tstars">★★★★★</div>
+      <p class="ttxt">"Tenía miedo de no saber inglés. Vicky me dijo que era normal. Hoy lo hablo con fluidez."</p>
+      <div class="tperson">
+        <div class="tavatar">🌺</div>
+        <div><div class="tname">Valeria G.</div><div class="tdest">🇺🇸 Texas</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="tdots" id="tdots">
+    <div class="tdot on"></div>
+    <div class="tdot"></div>
+    <div class="tdot"></div>
+    <div class="tdot"></div>
+  </div>
+</section>
+
+<div class="stripe"></div>
+
+<!-- ══════════════ REQUISITOS ══════════════ -->
+<section class="sec sec-req">
+  <div class="eyebrow">¿Eres tú?</div>
+  <h2 class="sec-h">Lo que necesitas<br>para aplicar.</h2>
+  <p class="sec-sub">Para EE.UU. — Visa J-1</p>
+  <div class="reqs">
+    <div class="ritem">
+      <div class="rcheck">✓</div>
+      <div><div class="rttl">18 a 26 años</div><div class="rnote">Rango de edad del programa oficial J-1</div></div>
+    </div>
+    <div class="ritem">
+      <div class="rcheck">✓</div>
+      <div><div class="rttl">Inglés comunicativo</div><div class="rnote">Lo suficiente para darte a entender con tu familia</div></div>
+    </div>
+    <div class="ritem">
+      <div class="rcheck">✓</div>
+      <div><div class="rttl">Experiencia con niños</div><div class="rnote">Sobrinos, primitos, trabajo o voluntariado — todo cuenta</div></div>
+    </div>
+    <div class="ritem">
+      <div class="rcheck">✓</div>
+      <div><div class="rttl">Licencia de manejo</div><div class="rnote">Para llevar a los niños a sus actividades</div></div>
+    </div>
+    <div class="ritem">
+      <div class="rcheck">✓</div>
+      <div><div class="rttl">Pasaporte vigente</div><div class="rnote">O en proceso de trámite — te orientamos</div></div>
+    </div>
+    <div class="ritem">
+      <div class="rcheck">✓</div>
+      <div><div class="rttl">Certificado de preparatoria</div><div class="rnote">Requisito del programa J-1</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ CTA FINAL ══════════════ -->
+<section class="sec-cta">
+  <div class="eyebrow">¿Lista?</div>
+  <h2 class="cta-h">El momento<br>de dar el<br><em>paso</em> es hoy.</h2>
+  <p class="cta-sub">Escríbeme por WhatsApp. Sin compromiso. En menos de 24 horas sabes si eres candidata y cuáles son tus próximos pasos.</p>
+  <a href="https://wa.me/524611557964?text=Hola%20Vicky!%20Vi%20la%20info%20de%20AuPair%20Baj%C3%ADo%20y%20me%20interesa%20saber%20m%C3%A1s%20del%20programa.%20%C2%BFSoy%20candidata%3F%20%F0%9F%8C%8E" class="cta-wa" target="_blank">
+    <svg viewBox="0 0 24 24" fill="white" width="26" height="26"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Escribirle a Vicky ahora
+  </a>
+  <div class="cta-info">
+    <div class="cta-line">📱 461 155 7964</div>
+    <div class="cta-line">🌐 aupairbajio.com</div>
+    <div class="cta-line">📍 Celaya, Guanajuato</div>
+  </div>
+</section>
+
+<!-- Float WhatsApp -->
+<a href="https://wa.me/524611557964?text=Hola%20Vicky!%20Vi%20la%20info%20de%20AuPair%20Baj%C3%ADo%20%F0%9F%8C%8E" class="fwa" target="_blank" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="white" width="30" height="30"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+// ── QUIZ ─────────────────────────────────────────────────────────
+var QS = [
+  {
+    e:"🎂", q:"¿Cuántos años tienes?",
+    opts:[
+      {i:"✅", t:"Entre 18 y 26 años", s:3},
+      {i:"⏳", t:"Tengo 17, pronto cumplo 18", s:2},
+      {i:"🤔", t:"Tengo más de 26", s:0}
+    ]
+  },
+  {
+    e:"👶", q:"¿Tienes experiencia cuidando niños?",
+    opts:[
+      {i:"✅", t:"Sí, con familia, trabajo o voluntariado", s:3},
+      {i:"🌱", t:"Poca, pero me encanta estar con niños", s:2},
+      {i:"❌", t:"Ninguna experiencia", s:1}
+    ]
+  },
+  {
+    e:"🗣️", q:"¿Puedes comunicarte en inglés?",
+    opts:[
+      {i:"💪", t:"Me doy a entender, puedo comunicarme", s:3},
+      {i:"📖", t:"Muy básico, pero quiero mejorar", s:2},
+      {i:"🤷", t:"Casi nada por ahora", s:1}
+    ]
+  }
+];
+
+var qIdx = 0, qScore = 0;
+
+function qRender() {
+  var q = QS[qIdx];
+  var pct = Math.round(((qIdx + 1) / QS.length) * 100);
+  document.getElementById('qbar').style.width = pct + '%';
+
+  var optsHTML = '';
+  for (var i = 0; i < q.opts.length; i++) {
+    var o = q.opts[i];
+    optsHTML += '<button class="q-opt" onclick="qPick(' + o.s + ',this)">'
+      + '<span class="q-opt-icon">' + o.i + '</span>' + o.t
+      + '</button>';
+  }
+
+  document.getElementById('qbox').innerHTML =
+    '<div class="q-num">Pregunta ' + (qIdx+1) + ' de ' + QS.length + '</div>'
+    + '<span class="q-emoji">' + q.e + '</span>'
+    + '<div class="q-txt">' + q.q + '</div>'
+    + '<div class="q-opts">' + optsHTML + '</div>';
+}
+
+function qPick(score, btn) {
+  var opts = document.querySelectorAll('.q-opt');
+  for (var i = 0; i < opts.length; i++) {
+    opts[i].disabled = true;
+    opts[i].style.pointerEvents = 'none';
+  }
+  btn.classList.add('sel');
+  qScore += score;
+  setTimeout(function() {
+    qIdx++;
+    if (qIdx < QS.length) { qRender(); } else { qResult(); }
+  }, 520);
+}
+
+function qResult() {
+  document.getElementById('qbar').style.width = '100%';
+  var emoji, title, txt, msg;
+  if (qScore >= 8) {
+    emoji = "🚀"; title = "¡Eres candidata ideal!";
+    txt = "Tienes exactamente lo que los programas buscan. El siguiente paso es platicar con Vicky para definir tu destino y fechas.";
+    msg = "Hola Vicky! Hice el test y me salió que soy candidata ideal para el programa AuPair. ¿Cuándo podemos hablar? 🚀";
+  } else if (qScore >= 5) {
+    emoji = "✨"; title = "¡Tienes potencial!";
+    txt = "Cumples los puntos clave. Algunos detalles se trabajan juntas. Escríbele a Vicky para saber exactamente qué sigue.";
+    msg = "Hola Vicky! Hice el test del programa AuPair y me salió que tengo potencial. ¿Podemos hablar? ✨";
+  } else {
+    emoji = "💬"; title = "Platiquemos primero";
+    txt = "Cada caso es diferente. Lo mejor es que Vicky te oriente de forma personal para ver qué opciones tienes.";
+    msg = "Hola Vicky! Hice el test del programa AuPair y tengo dudas sobre si califico. ¿Podemos platicar? 💬";
+  }
+  var enc = encodeURIComponent(msg);
+  document.getElementById('qbox').innerHTML =
+    '<div class="result">'
+    + '<div class="result-badge">' + emoji + '</div>'
+    + '<div class="result-ttl">' + title + '</div>'
+    + '<p class="result-txt">' + txt + '</p>'
+    + '<div class="result-btns">'
+    + '<a href="https://wa.me/524611557964?text=' + enc + '" class="btn-green" target="_blank">💬 Hablar con Vicky ahora</a>'
+    + '<button class="btn-reset" onclick="qReset()">Repetir test ↺</button>'
+    + '</div></div>';
+}
+
+function qReset() {
+  qIdx = 0; qScore = 0; qRender();
+}
+
+// ── DESTINOS ──────────────────────────────────────────────────────
+function showDest(id, btn) {
+  var panes = document.querySelectorAll('.dest-pane');
+  var tabs = document.querySelectorAll('.dest-tab');
+  for (var i = 0; i < panes.length; i++) panes[i].classList.remove('on');
+  for (var i = 0; i < tabs.length; i++) tabs[i].classList.remove('on');
+  document.getElementById('dp' + id).classList.add('on');
+  btn.classList.add('on');
+}
+
+// ── TESTIMONIOS DOTS ──────────────────────────────────────────────
+(function() {
+  var track = document.getElementById('tscroll');
+  var dots = document.querySelectorAll('.tdot');
+  if (!track || !dots.length) return;
+
+  track.addEventListener('scroll', function() {
+    var cardW = track.scrollWidth / dots.length;
+    var idx = Math.min(Math.round(track.scrollLeft / cardW), dots.length - 1);
+    for (var i = 0; i < dots.length; i++) {
+      dots[i].classList.toggle('on', i === idx);
+    }
+  }, {passive: true});
+
+  for (var i = 0; i < dots.length; i++) {
+    (function(idx) {
+      dots[idx].addEventListener('click', function() {
+        var cardW = track.scrollWidth / dots.length;
+        track.scrollTo({left: cardW * idx, behavior: 'smooth'});
+      });
+    })(i);
+  }
+})();
+
+// ── STICKY NAV ────────────────────────────────────────────────────
+(function() {
+  var nav = document.getElementById('topnav');
+  var hero = document.getElementById('top');
+  if (!nav || !hero) return;
+  function check() {
+    var rect = hero.getBoundingClientRect();
+    if (rect.bottom < 0) {
+      nav.classList.add('vis');
+    } else {
+      nav.classList.remove('vis');
+    }
+  }
+  window.addEventListener('scroll', check, {passive: true});
+  check();
+})();
+
+// ── PROGRESS BAR ─────────────────────────────────────────────────
+(function() {
+  var bar = document.getElementById('ptop');
+  if (!bar) return;
+  function upd() {
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = h > 0 ? (window.scrollY / h) * 100 : 0;
+    bar.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', upd, {passive: true});
+  upd();
+})();
+
+// ── INIT ──────────────────────────────────────────────────────────
+qRender();
+</script>
+</body>
+</html>
