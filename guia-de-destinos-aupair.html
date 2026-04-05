@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guía de Destinos Au Pair — AuPair Bajío</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --purple-deep: #1E0533;
+  --purple-mid: #4A0E6B;
+  --magenta: #C0186A;
+  --magenta-light: #E0357F;
+  --teal: #00BFA5;
+  --teal-dark: #009688;
+  --cream: #FFF8F2;
+  --cream-dark: #F5EDE3;
+  --text-dark: #1A0A28;
+  --text-mid: #4A3560;
+  --white: #FFFFFF;
+  --gold: #F5C842;
+
+  /* Destino colors */
+  --usa-color: #C0186A;
+  --usa-glow: rgba(192,24,106,0.3);
+  --fr-color: #0057B7;
+  --fr-glow: rgba(0,87,183,0.3);
+  --de-color: #00BFA5;
+  --de-glow: rgba(0,191,165,0.3);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--purple-deep);
+  min-height: 100vh;
+  overflow-x: hidden;
+  color: var(--white);
+}
+
+/* === BACKGROUND === */
+.bg-mesh {
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 10%, rgba(192,24,106,0.25) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 80% at 80% 80%, rgba(0,191,165,0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 100% 100% at 50% 50%, #2D0845 0%, #1E0533 100%);
+  z-index: 0;
+}
+
+.bg-dots {
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+  z-index: 0;
+}
+
+/* === WRAPPER === */
+.page-wrapper {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 16px 80px;
+}
+
+/* === HEADER === */
+.page-header {
+  text-align: center;
+  padding: 40px 0 36px;
+}
+
+.brand-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 100px;
+  padding: 8px 18px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 28px;
+}
+
+.brand-dot {
+  width: 7px; height: 7px;
+  background: var(--teal);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+.page-header h1 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(32px, 7vw, 52px);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+
+.page-header h1 em {
+  font-style: italic;
+  color: var(--teal);
+}
+
+.page-header p {
+  font-size: 16px;
+  color: rgba(255,255,255,0.65);
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* === DESTINO SELECTOR === */
+.destino-selector {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
+.dest-btn {
+  position: relative;
+  background: rgba(255,255,255,0.05);
+  border: 1.5px solid rgba(255,255,255,0.12);
+  border-radius: 16px;
+  padding: 18px 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  overflow: hidden;
+}
+
+.dest-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 14px;
+}
+
+.dest-btn.usa::before { background: radial-gradient(ellipse at center, var(--usa-glow), transparent 70%); }
+.dest-btn.fr::before  { background: radial-gradient(ellipse at center, var(--fr-glow), transparent 70%); }
+.dest-btn.de::before  { background: radial-gradient(ellipse at center, var(--de-glow), transparent 70%); }
+
+.dest-btn:hover::before,
+.dest-btn.active::before { opacity: 1; }
+
+.dest-btn.active.usa { border-color: var(--usa-color); box-shadow: 0 0 24px var(--usa-glow); }
+.dest-btn.active.fr  { border-color: var(--fr-color);  box-shadow: 0 0 24px var(--fr-glow); }
+.dest-btn.active.de  { border-color: var(--de-color);  box-shadow: 0 0 24px var(--de-glow); }
+
+.dest-flag {
+  font-size: 36px;
+  display: block;
+  margin-bottom: 8px;
+  transition: transform 0.3s ease;
+}
+
+.dest-btn:hover .dest-flag,
+.dest-btn.active .dest-flag { transform: scale(1.15); }
+
+.dest-name {
+  font-family: 'Fraunces', serif;
+  font-size: 17px;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.dest-tag {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
+.dest-btn.active .dest-tag { opacity: 1; }
+.dest-btn.active.usa .dest-tag { color: var(--usa-color); }
+.dest-btn.active.fr  .dest-tag { color: #60a5fa; }
+.dest-btn.active.de  .dest-tag { color: var(--de-color); }
+
+/* === GUIDE PANELS === */
+.guide-panel {
+  display: none;
+  animation: fadeInUp 0.4s ease;
+}
+
+.guide-panel.active { display: block; }
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* === HERO STAT STRIP === */
+.stat-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.stat-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 14px;
+  padding: 16px 12px;
+  text-align: center;
+}
+
+.stat-value {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.stat-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  opacity: 0.55;
+}
+
+/* === SECTIONS === */
+.guide-section {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: 20px;
+  padding: 24px;
+  margin-bottom: 16px;
+}
+
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.section-icon {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.section-title {
+  font-family: 'Fraunces', serif;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* === LIST ITEMS === */
+.req-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.req-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgba(255,255,255,0.82);
+}
+
+.req-list li::before {
+  content: '✓';
+  font-size: 13px;
+  font-weight: 600;
+  min-width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin-top: 1px;
+  flex-shrink: 0;
+}
+
+.usa-panel .req-list li::before { background: rgba(192,24,106,0.25); color: var(--usa-color); }
+.fr-panel  .req-list li::before { background: rgba(0,87,183,0.25);  color: #60a5fa; }
+.de-panel  .req-list li::before { background: rgba(0,191,165,0.25); color: var(--de-color); }
+
+/* === HIGHLIGHT BOX === */
+.highlight-box {
+  border-radius: 14px;
+  padding: 16px 18px;
+  margin-top: 14px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.usa-panel .highlight-box { background: rgba(192,24,106,0.12); border-left: 3px solid var(--usa-color); }
+.fr-panel  .highlight-box { background: rgba(0,87,183,0.12);  border-left: 3px solid #60a5fa; }
+.de-panel  .highlight-box { background: rgba(0,191,165,0.12); border-left: 3px solid var(--de-color); }
+
+.highlight-box strong { display: block; margin-bottom: 4px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.06em; opacity: 0.7; }
+
+/* === TIMELINE === */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.tl-item {
+  display: flex;
+  gap: 16px;
+  position: relative;
+}
+
+.tl-item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 15px;
+  top: 32px;
+  width: 2px;
+  height: calc(100% - 8px);
+  background: rgba(255,255,255,0.1);
+}
+
+.tl-dot {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 2px;
+  position: relative;
+  z-index: 1;
+}
+
+.usa-panel .tl-dot { background: var(--usa-color); }
+.fr-panel  .tl-dot { background: #0057B7; }
+.de-panel  .tl-dot { background: var(--de-color); color: var(--purple-deep); }
+
+.tl-content {
+  padding-bottom: 20px;
+  flex: 1;
+}
+
+.tl-time {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.5;
+  margin-bottom: 3px;
+}
+
+.tl-text {
+  font-size: 14px;
+  color: rgba(255,255,255,0.82);
+  line-height: 1.5;
+}
+
+/* === HONEST BOX === */
+.honest-box {
+  background: rgba(245,200,66,0.08);
+  border: 1px solid rgba(245,200,66,0.2);
+  border-radius: 14px;
+  padding: 18px;
+}
+
+.honest-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+
+.honest-item {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.5;
+}
+
+.honest-item:last-child { margin-bottom: 0; }
+
+.honest-item span:first-child { font-size: 16px; flex-shrink: 0; }
+
+/* === STORY CARD === */
+.story-card {
+  background: linear-gradient(135deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03));
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 20px;
+  padding: 24px;
+  margin-bottom: 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+.story-card::before {
+  content: '"';
+  position: absolute;
+  top: -10px;
+  right: 20px;
+  font-family: 'Fraunces', serif;
+  font-size: 120px;
+  opacity: 0.05;
+  line-height: 1;
+}
+
+.story-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.story-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
+
+.usa-panel .story-avatar { background: rgba(192,24,106,0.2); }
+.fr-panel  .story-avatar { background: rgba(0,87,183,0.2); }
+.de-panel  .story-avatar { background: rgba(0,191,165,0.2); }
+
+.story-name {
+  font-family: 'Fraunces', serif;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.story-origin {
+  font-size: 12px;
+  opacity: 0.5;
+}
+
+.story-text {
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.82);
+  font-style: italic;
+}
+
+/* === CTA SECTION === */
+.cta-section {
+  background: linear-gradient(135deg, rgba(192,24,106,0.2), rgba(74,14,107,0.3));
+  border: 1px solid rgba(192,24,106,0.3);
+  border-radius: 24px;
+  padding: 32px 24px;
+  text-align: center;
+  margin-top: 28px;
+}
+
+.cta-section h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+
+.cta-section p {
+  font-size: 14px;
+  color: rgba(255,255,255,0.65);
+  margin-bottom: 24px;
+  line-height: 1.6;
+}
+
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #25D366;
+  color: white;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 16px 28px;
+  border-radius: 100px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  box-shadow: 0 8px 32px rgba(37,211,102,0.3);
+}
+
+.cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(37,211,102,0.4);
+}
+
+.cta-btn svg { width: 20px; height: 20px; }
+
+/* === SELLO VICKY === */
+.vicky-sello {
+  text-align: center;
+  padding: 20px 0 0;
+  opacity: 0.6;
+  font-size: 13px;
+  color: rgba(255,255,255,0.6);
+}
+
+.vicky-sello strong { color: rgba(255,255,255,0.85); }
+
+/* USA accent colors */
+.usa-panel .stat-value { color: #ff6fa0; }
+.fr-panel  .stat-value { color: #60a5fa; }
+.de-panel  .stat-value { color: var(--teal); }
+
+/* mobile */
+@media (max-width: 480px) {
+  .destino-selector { gap: 8px; }
+  .dest-btn { padding: 14px 8px; }
+  .dest-flag { font-size: 28px; }
+  .dest-name { font-size: 14px; }
+  .stat-strip { gap: 8px; }
+  .stat-value { font-size: 18px; }
+  .guide-section { padding: 18px 16px; }
+}
+</style>
+</head>
+<body>
+
+<div class="bg-mesh"></div>
+<div class="bg-dots"></div>
+
+<div class="page-wrapper">
+
+  <!-- HEADER -->
+  <div class="page-header">
+    <div class="brand-badge">
+      <div class="brand-dot"></div>
+      AuPair Bajío — Por Vicky
+    </div>
+    <h1>Tu destino Au Pair,<br><em>sin letra chica</em></h1>
+    <p>Aquí está la información real que ninguna agencia te da. Elige tu destino y descubre si es para ti.</p>
+  </div>
+
+  <!-- SELECTOR -->
+  <div class="destino-selector">
+    <button class="dest-btn usa active" onclick="showDestino('usa')">
+      <span class="dest-flag">🇺🇸</span>
+      <span class="dest-name">USA</span>
+      <span class="dest-tag">El más popular</span>
+    </button>
+    <button class="dest-btn fr" onclick="showDestino('fr')">
+      <span class="dest-flag">🇫🇷</span>
+      <span class="dest-name">Francia</span>
+      <span class="dest-tag">Europa con encanto</span>
+    </button>
+    <button class="dest-btn de" onclick="showDestino('de')">
+      <span class="dest-flag">🇩🇪</span>
+      <span class="dest-name">Alemania</span>
+      <span class="dest-tag">Orden y oportunidad</span>
+    </button>
+  </div>
+
+  <!-- ======================== USA PANEL ======================== -->
+  <div class="guide-panel usa-panel active" id="panel-usa">
+
+    <div class="stat-strip">
+      <div class="stat-card">
+        <span class="stat-value">$215 USD</span>
+        <span class="stat-label">Pago semanal</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value">12 meses</span>
+        <span class="stat-label">Duración base</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value">18–26</span>
+        <span class="stat-label">Edad requerida</span>
+      </div>
+    </div>
+
+    <!-- Requisitos -->
+    <div class="guide-section">
+      <div class="section-label">
+        <span class="section-icon">📋</span>
+        <span class="section-title">Qué necesitas para calificar</span>
+      </div>
+      <ul class="req-list">
+        <li>Tener entre 18 y 26 años al momento de la salida</li>
+        <li>Inglés conversacional (no necesitas ser experta, sí funcional)</li>
+        <li>200+ horas comprobables de cuidado de niños (no tienen que ser profesionales)</li>
+        <li>Licencia de conducir vigente — en USA manejarás a los niños</li>
+        <li>Carta de antecedentes no penales</li>
+        <li>Examen médico oficial del programa</li>
+        <li>No tener hijos propios (requisito del programa)</li>
+      </ul>
+      <div class="highlight-box">
+        <strong>📌 Dato importante</strong>
+        La visa J-1 es un trámite personal — tú vas a la entrevista en la embajada. Pero no vas sola ni sin preparación: en AuPair Bajío llenamos los formularios contigo y te damos una plática completa antes de tu cita para que llegues segura y lista.
+      </div>
+    </div>
+
+    <!-- Costos reales del programa -->
+    <div class="guide-section">
+      <div class="section-label">
+        <span class="section-icon">💵</span>
+        <span class="section-title">Qué incluye el programa (lo que cubre la familia)</span>
+      </div>
+      <ul class="req-list">
+        <li>Vuelo de ida desde México (cubierto por la familia anfitriona)</li>
+        <li>Casa y comida completa durante todo el año</li>
+        <li>Acceso a auto para uso personal fuera de horario *</li>
+        <li>Inscripción obligatoria a clases universitarias (hasta $500 USD al año — lo pagan ellos)</li>
+        <li>2 semanas de vacaciones pagadas</li>
+        <li>Seguro médico básico incluido</li>
+        <li>🌟 <strong>AuPair Connect</strong> — Tour grupal en Nueva York incluido en el programa. Conoces la ciudad y a otras Au Pairs de todo el mundo antes de llegar con tu familia.</li>
+      </ul>
+      <div class="highlight-box">
+        <strong>🤝 Socios directos de AuPair Care</strong>
+        Trabajamos con AuPair Care, la agencia de Au Pairs más grande de Estados Unidos. Eso significa más familias, mejores matches y un respaldo institucional que pocas agencias mexicanas tienen.
+      </div>
+      <div class="highlight-box" style="margin-top:10px;">
+        <strong>💰 Lo que tú pagas</strong>
+        Los costos de tu agencia en México (consulta con Vicky para conocer el desglose exacto). Todo lo demás corre por cuenta del programa.
+      </div>
+    </div>
+
+    <!-- Timeline -->
+    <div class="guide-section">
+      <div class="section-label">
+        <span class="section-icon">🗓️</span>
+        <span class="section-title">Tu línea de tiempo real</span>
+      </div>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-dot">1</div>
+          <div class="tl-content">
+            <div class="tl-time">Hoy — Semana 1</div>
+            <div class="tl-text">Diagnóstico con Vicky. Revisamos si calificas, qué te falta y trazamos el plan exacto.</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot">2</div>
+          <div class="tl-content">
+            <div class="tl-time">Mes 1 – 2</div>
+            <div class="tl-text">Preparación de expediente: documentos, carta de motivación en inglés, perfil con foto profesional.</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot">3</div>
+          <div class="tl-content">
+            <div class="tl-time">Mes 2 – 4</div>
+            <div class="tl-text">Tu perfil circula entre familias americanas. Empiezan las entrevistas — te preparamos con simulacros.</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot">4</div>
+          <div class="tl-content">
+            <div class="tl-time">Mes 4</div>
+            <div class="tl-text">¡Match! Encuentras tu familia. Iniciamos trámite de visa J-1 y preparación de viaje.</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot">5</div>
+          <div class="tl-content">
+            <div class="tl-time">Mes 5 – 6</div>
+            <div class="tl-text">Despegue. Llegas a USA, conoces a tu familia y empieza tu año de transformación.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lo bueno y lo difícil -->
+    <div class="guide-section">
+      <div class="section-label">
+        <span class="section-icon">⚖️</span>
+        <span class="section-title">Lo que nadie te dice — honestamente</span>
+      </div>
+      <div class="honest-box">
+        <div class="honest-label">
+          <span>⚡</span> Sin filtros, así funciona esto
+        </div>
+        <div class="honest-item">
+          <span>✅</span>
+          <span>El inglés mejora <em>brutal</em> porque lo usas todo el día. En 3 meses hablas diferente.</span>
+        </div>
+        <div class="honest-item">
+          <span>✅</span>
+          <span>Ahorras de verdad. Sin pagar renta ni comida, tus $215 USD semanales son casi todos tuyos.</span>
+        </div>
+        <div class="honest-item">
+          <span>✅</span>
+          <span>Abres cuentas bancarias en USA, construyes historial crediticio americano. Eso vale mucho.</span>
+        </div>
+        <div class="honest-item">
+          <span>⚠️</span>
+          <span>Los primeros 30 días son los más difíciles. Extrañas tu casa, te sientes sola. Es normal y pasa.</span>
+        </div>
+        <div class="honest-item">
+          <span>⚠️</span>
+          <span>El nivel de inglés importa para la entrevista con las familias. Si es muy básico, el proceso se alarga.</span>
+        </div>
+        <div class="honest-item">
+          <span>⚠️</span>
+          <span>No todas las familias son perfectas. Por eso el acompañamiento de Vicky existe — para que no estés sola si algo no funciona.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Historia -->
+    <div class="story-card">
+      <div class="story-meta">
+        <div class="story-avatar">👩</div>
+        <div>
+          <div class="story-name">Mariana, 23 años</div>
+          <div class="story-origin">De León, Gto. → Chicago, Illinois</div>
+        </div>
+      </div>
+      <div class="story-text">
+        "Llegué con miedo y con un inglés que apenas me alcanzaba para pedir en un restaurante. 
+        A los 4 meses ya le explicaba los deberes a los niños, manejaba a sus actividades y los fines 
+        de semana viajaba por cuenta propia. Ese año no solo aprendí inglés — aprendí que soy capaz 
+        de mucho más de lo que creía."
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-section">
+      <h3>¿Te late USA?<br>Platica con Vicky hoy</h3>
+      <p>18 años acompañando a chicas mexicanas. Tu proceso empieza con una conversación, no con papeleo.</p>
+      <a class="cta-btn" href="https://wa.me/524611234567?text=Hola%20Vicky!%20Le%C3%AD%20la%20gu%C3%ADa%20de%20USA%20y%20quiero%20saber%20si%20califico%20para%20el%20programa.%20%F0%9F%87%BA%F0%9F%87%B8" target="_blank">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Quiero saber si califico para USA
+      </a>
+    </div>
+
+  </div>
+
+  <!-- ======================== FRANCIA PANEL ======================== -->
+  <div class="guide-panel fr-panel" id="panel-fr">
+
+    <div class="stat-strip">
+      <div class="stat-card">
+        <span class="stat-value">€70–90</span>
+        <span class="stat-label">Pago semanal</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value">12 meses</span>
+        <span class="stat-label">Duración base</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value">18–26</span>
+        <span class="stat-label">Edad requerida</span>
+      </div>
+    </div>
+
+    <!-- Requisitos -->
+    <div class="guide-section">
+      <div class="section-label">
+        <span class="section-icon">📋</span>
+        <span class="section-title">Qué necesitas para calificar</span>
+      </div>
+      <ul class="req-list">
+        <li>Tener entre 18 y 26 años al momento de la salida</li>
+        <li>Interés o conocimiento básico de francés (la familia normalmente ayuda a aprender)</li>
+        <li>Inglés funcional — muchas familias lo hablan también</li>
+        <li>Experiencia en cuidado de niños (documentada)</li>
+        <li>Carta de antecedentes no penales</li>
+        <li>Pasaporte vigente con al menos 18 meses de validez</li>
+        <li>Seguro de salud internacional (algunos programas lo incluyen)</li>
+      </ul>
+      <div class="highlight-box">
+        <strong>📌 Visa para Europa</strong>
+        Francia requiere visa de larga estancia como Au Pair. Se tramita en el Consulado Francés en México. El proceso tarda entre 6 y 10 semanas — lo gestionamos contigo desde el inicio.
+      </div>
+    </div>
+
+    <!-- Qué incluye -->
+    <div class="guide-section">
+      <div class="section-label">
+        <span class="section-icon">💶</span>
+        <span class="section-title">Qué cubre la familia anfitriona</span>
+      </div>
+      <ul class="req-list">
+        <li>Habitación privada con llave propia en su casa</li>
+        <li>Tres comidas al día (en la dinámica familiar)</li>
+        <li>Transporte en la ciudad (pase de metro o ayuda equivalente)</li>
+        <li>Clases de francés — la ley francesa lo exige, las paga la Au Pair (está contemplado en el presupuesto del programa)</li>
+        <li>1 día y medio libre a la semana (generalmente fin de semana)</li>
+      </ul>
+      <div class="highlight-box">
+        <strong>💡 Por qué Francia aunque paga menos</strong>
+        El costo de vida en París está cubierto. Sin pagar renta, comida ni transporte, tus €70–90 semanales se convierten en ahorro real. Más el francés que aprendes — eso vale dinero en el mercado laboral mexicano.
+      </div>
+    </div>
+
+    <!-- Timeline -->
+    <div class="guide-section">
+      <div class="section-label">
+        <span class="section-icon">🗓️</span>
+        <span class="section-title">Tu línea de tiempo real</span>
+      </div>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-dot">1</div>
+          <div class="tl-content">
+            <div class="tl-time">Hoy — Semana 1</div>
+            <div class="tl-text">Diagnóstico con Vicky. Francia es diferente a USA — revisamos juntas si es tu destino.</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot">2</div>
+          <div class="tl-content">
+            <div class="tl-time">Mes 1 – 2</div>
+            <div class="tl-text">Expediente completo, perfil y búsqueda de familia compatible con tu personalidad y ciudad ideal.</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot">3</div>
+          <div class="tl-content">
+            <div class="tl-time">Mes 2 – 4</div>
+            <div class="tl-text">Match con familia. Iniciamos trámite de visa en el Consulado Francés (proceso de 6–10 semanas).</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot">4</div>
+          <div class="tl-content">
+            <div class="tl-time">Mes 5 – 7</div>
+            <div class="tl-text">Llegada a Francia. Adaptación, clases de francés y vida europea desde el primer día.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Honestidad -->
+    <div class="guide-section">
+      <div class="section-label">
+        <span class="section-icon">⚖️</span>
+        <span class="section-title">Lo que nadie te dice — honestamente</span>
+      </div>
+      <div class="honest-box">
+        <div class="honest-label">
+          <span>⚡</span> Sin filtros, así funciona esto
+        </div>
+        <div class="honest-item">
+          <span>✅</span>
+          <span>Vives en Europa. Los fines de semana puedes tomar un tren a España, Bélgica, Italia. Eso no tiene precio.</span>
+        </div>
+        <div class="honest-item">
+          <span>✅</span>
+          <span>El francés que aprendes abre puertas en México, Canadá y en toda América Latina. Es una inversión de vida.</span>
+        </div>
+        <div class="honest-item">
+          <span>✅</span>
+          <span>Las familias francesas valoran mucho la educación y el respeto. Si eres responsable, la relación funciona muy bien.</span>
+        </div>
+        <div class="honest-item">
+          <span>⚠️</span>
+          <span>La paga es menor que USA. No vayas pensando en ahorrar mucho — el valor aquí es la experiencia cultural y el idioma.</span>
+        </div>
+        <div class="honest-item">
+          <span>⚠️</span>
+          <span>El clima de invierno en Paris puede afectar el ánimo los primeros meses. Las que lo saben, se preparan.</span>
+        </div>
+        <div class="honest-item">
+          <span>⚠️</span>
+          <span>Sin francés básico el arranque es más difícil. Recomendamos empezar clases antes de salir — Vicky te orienta.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Historia -->
+    <div class="story-card">
+      <div class="story-meta">
+        <div class="story-avatar">👩</div>
+        <div>
+          <div class="story-name">Sofía, 24 años</div>
+          <div class="story-origin">De Querétaro → París, Francia</div>
+        </div>
+      </div>
+      <div class="story-text">
+        "Llegué sin saber casi nada de francés. La familia me tuvo paciencia y al mes ya entendía las 
+        conversaciones. Los fines de semana recorría museos, mercados y calles que solo había visto en 
+        fotos. Hoy trabajo en una empresa con clientes francófonos gracias al idioma que aprendí ese año. 
+        Fue la mejor decisión de mi vida."
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-section">
+      <h3>¿Francia es tu destino?<br>Hablemos hoy</h3>
+      <p>El proceso para Europa es diferente. Vicky te explica todo en una conversación sin compromiso.</p>
+      <a class="cta-btn" href="https://wa.me/524611234567?text=Hola%20Vicky!%20Le%C3%AD%20la%20gu%C3%ADa%20de%20Francia%20y%20quiero%20saber%20si%20califico%20para%20irme%20a%20Europa.%20%F0%9F%87%AB%F0%9F%87%B7" target="_blank">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Quiero saber si califico para Francia
+      </a>
+    </div>
+
+  </div>
+
+  <!-- ======================== ALEMANIA PANEL ======================== -->
+  <div class="guide-panel de-panel" id="panel-de">
+
+    <div class="stat-strip">
+      <div class="stat-card">
+        <span class="stat-value">€280</span>
+        <span class="stat-label">Pago mensual mín.</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value">12 meses</span>
+        <span class="stat-label">Duración base</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value">18–26</span>
+        <span class="stat-label">Edad requerida</span>
+      </div>
+    </div>
+
+    <!-- Requisitos -->
+    <div class="guide-section">
+      <div class="section-label">
+        <span class="section-icon">📋</span>
+        <span class="section-title">Qué necesitas para calificar</span>
+      </div>
+      <ul class="req-list">
+        <li>Tener entre 18 y 26 años al momento de la salida</li>
+        <li>Conocimiento básico de alemán (mínimo nivel A1 — Vicky te orienta cómo conseguirlo)</li>
+        <li>Experiencia en cuidado de niños (documentada)</li>
+        <li>Carta de antecedentes no penales</li>
+        <li>Pasaporte vigente con al menos 18 meses de validez</li>
+        <li>Seguro de salud internacional (muchos programas lo incluyen)</li>
+        <li>Ganas de aprender — Alemania premia la disciplina y la puntualidad</li>
+      </ul>
+      <div class="highlight-box">
+        <strong>📌 Alemán desde cero</strong>
+        No necesitas hablar alemán perfectamente para iniciar el proceso. Sí necesitas mostrar intención de aprender. Los primeros cursos los puedes tomar en México — Vicky te dice dónde y cuáles.
+      </div>
+    </div>
+
+    <!-- Qué incluye -->
+    <div class="guide-section">
+      <div class="section-label">
+        <span class="section-icon">💶</span>
+        <span class="section-title">Qué cubre la familia anfitriona</span>
+      </div>
+      <ul class="req-list">
+        <li>Habitación privada en su hogar</li>
+        <li>Comidas incluidas (según acuerdo con la familia)</li>
+        <li>Transporte local o abono de transporte público</li>
+        <li>Acceso a clases de alemán — legalmente requerido, la familia lo apoya</li>
+        <li>Vacaciones pagadas incluidas en el programa</li>
+      </ul>
+      <div class="highlight-box">
+        <strong>💡 El valor real de Alemania</strong>
+        Alemania tiene una de las economías más fuertes de Europa. El alemán que aprendes tiene altísima demanda en empresas mexicanas con operaciones europeas. Muchas chicas regresan con empleo asegurado.
+      </div>
+    </div>
+
+    <!-- Timeline -->
+    <div class="guide-section">
+      <div class="section-label">
+        <span class="section-icon">🗓️</span>
+        <span class="section-title">Tu línea de tiempo real</span>
+      </div>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-dot">1</div>
+          <div class="tl-content">
+            <div class="tl-time">Hoy — Semana 1</div>
+            <div class="tl-text">Diagnóstico con Vicky. Definimos qué nivel de alemán tienes y qué necesitas trabajar.</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot">2</div>
+          <div class="tl-content">
+            <div class="tl-time">Mes 1 – 3</div>
+            <div class="tl-text">Preparación de expediente + inicio de clases de alemán básico. El proceso de Alemania requiere más preparación previa.</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot">3</div>
+          <div class="tl-content">
+            <div class="tl-time">Mes 3 – 5</div>
+            <div class="tl-text">Match con familia alemana. Tramitamos visa en el Consulado Alemán en México.</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot">4</div>
+          <div class="tl-content">
+            <div class="tl-time">Mes 6 – 8</div>
+            <div class="tl-text">Llegada a Alemania. Curso intensivo de alemán + integración con la familia y la ciudad.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Honestidad -->
+    <div class="guide-section">
+      <div class="section-label">
+        <span class="section-icon">⚖️</span>
+        <span class="section-title">Lo que nadie te dice — honestamente</span>
+      </div>
+      <div class="honest-box">
+        <div class="honest-label">
+          <span>⚡</span> Sin filtros, así funciona esto
+        </div>
+        <div class="honest-item">
+          <span>✅</span>
+          <span>Alemania es el destino que más te diferencia laboralmente. Pocas mexicanas hablan alemán — eso vale muchísimo.</span>
+        </div>
+        <div class="honest-item">
+          <span>✅</span>
+          <span>Los alemanes son directos y organizados. Si tú también lo eres, la convivencia funciona excelente.</span>
+        </div>
+        <div class="honest-item">
+          <span>✅</span>
+          <span>Europa completa a tu alcance. Berlín, Amsterdam, Praga, Viena — en tren y a precios accesibles.</span>
+        </div>
+        <div class="honest-item">
+          <span>⚠️</span>
+          <span>El alemán es el idioma más difícil de los tres destinos. Requiere más esfuerzo y más tiempo de preparación.</span>
+        </div>
+        <div class="honest-item">
+          <span>⚠️</span>
+          <span>El frío es real. Inviernos largos y oscuros — no es para todas. Vale saberlo antes de comprometerse.</span>
+        </div>
+        <div class="honest-item">
+          <span>⚠️</span>
+          <span>Las familias alemanas valoran mucho la privacidad y los límites. Es diferente a la dinámica mexicana — hay que adaptarse y lo explica muy bien Vicky en el proceso.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Historia -->
+    <div class="story-card">
+      <div class="story-meta">
+        <div class="story-avatar">👩</div>
+        <div>
+          <div class="story-name">Daniela, 22 años</div>
+          <div class="story-origin">De Celaya, Gto. → Múnich, Alemania</div>
+        </div>
+      </div>
+      <div class="story-text">
+        "Llegué sin saber nada de alemán. A los seis meses podía tener conversaciones completas. 
+        Lo que más me sorprendió fue lo diferente que es la cultura — aprendes a organizarte, a respetar 
+        los tiempos, a ser independiente de una forma que en México nadie te enseña. Regresé siendo 
+        otra persona, más segura, más capaz. Y con un idioma que aquí nadie más tiene."
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-section">
+      <h3>¿Alemania te llama?<br>Platica con Vicky hoy</h3>
+      <p>Es el destino que más prepara y más diferencia. Vicky te dice si eres candidata para Europa.</p>
+      <a class="cta-btn" href="https://wa.me/524611234567?text=Hola%20Vicky!%20Le%C3%AD%20la%20gu%C3%ADa%20de%20Alemania%20y%20me%20interesa%20saber%20si%20califico%20para%20irme%20a%20Europa.%20%F0%9F%87%A9%F0%9F%87%AA" target="_blank">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Quiero saber si califico para Alemania
+      </a>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="vicky-sello">
+    Hecho con cariño por <strong>Vicky</strong> · AuPair Bajío · 18 años, más de 350 chicas acompañadas
+  </div>
+
+</div>
+
+<script>
+function showDestino(dest) {
+  // Update buttons
+  document.querySelectorAll('.dest-btn').forEach(btn => btn.classList.remove('active'));
+  document.querySelector('.dest-btn.' + dest).classList.add('active');
+
+  // Update panels
+  document.querySelectorAll('.guide-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('panel-' + dest).classList.add('active');
+
+  // Smooth scroll to content
+  setTimeout(() => {
+    document.getElementById('panel-' + dest).scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }, 50);
+}
+</script>
+
+</body>
+</html>
