@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AuPair Bajío • Tu experiencia de vida, acompañada por Vicky</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --purple-dark: #3D1F6E;
+            --magenta: #D63384;
+            --teal: #00B4A6;
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: #EEE8F8;
+            color: #1a1a2e;
+            line-height: 1.65;
+        }
+        .page { max-width: 1100px; margin: 0 auto; background: #FAF8FF; }
+
+        /* HEADER */
+        .header {
+            background: var(--purple-dark);
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .header img { border-radius: 50%; object-fit: cover; }
+
+        /* HERO */
+        .hero {
+            background: var(--purple-dark);
+            color: white;
+            padding: 80px 24px 60px;
+            text-align: center;
+        }
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(32px, 6vw, 48px);
+            line-height: 1.1;
+            margin-bottom: 16px;
+        }
+        .hero-subtitle {
+            font-size: clamp(18px, 4vw, 21px);
+            max-width: 720px;
+            margin: 0 auto 32px;
+        }
+        .btn-wa {
+            background: #25D366;
+            color: white;
+            padding: 18px 40px;
+            border-radius: 9999px;
+            font-size: 18px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 10px 30px rgba(37,211,102,0.4);
+        }
+
+        /* SECTIONS */
+        .section {
+            padding: 60px 24px;
+            border-bottom: 1px solid #E2D9F3;
+        }
+        @media (max-width: 480px) {
+            .section { padding: 50px 20px; }
+        }
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(26px, 5vw, 34px);
+            text-align: center;
+            margin-bottom: 28px;
+            color: var(--purple-dark);
+        }
+
+        /* CARDS */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background: white;
+            padding: 28px 24px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+            text-align: center;
+        }
+        .card .btn-wa {
+            margin-top: 20px;
+            width: 100%;
+            justify-content: center;
+            font-size: 16px;
+            padding: 16px;
+        }
+
+        /* CTA FINAL */
+        .cta-final {
+            background: var(--purple-dark);
+            color: white;
+            text-align: center;
+            padding: 90px 24px;
+        }
+        .cta-final h2 {
+            font-size: clamp(28px, 5vw, 38px);
+            margin-bottom: 24px;
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- HEADER -->
+    <div class="header">
+        <div style="display:flex; align-items:center; gap:12px;">
+            <img src="https://i.ibb.co/BK2TzLZD/Whats-App-Image-2026-04-03-at-9-00-50-AM.jpg" alt="Vicky" width="52" height="52">
+            <div>
+                <strong style="font-size:19px; color:white;">AuPair Bajío</strong><br>
+                <span style="font-size:11px; letter-spacing:1px; color:#00B4A6;">by Vicky • Celaya, Gto.</span>
+            </div>
+        </div>
+        <img src="https://i.ibb.co/C3r95hWx/Au-Pair-Care-Logo-Primary.png" alt="AuPairCare" height="48">
+    </div>
+
+    <!-- HERO -->
+    <div class="hero">
+        <h1 class="hero-title">No es solo un programa au pair.<br>Es tu experiencia de vida,<br><span style="color:#D63384;">acompañada por Vicky</span></h1>
+        <p class="hero-subtitle">18 años de experiencia real • Viví el programa en Chicago 2006 • Socia directa de AuPairCare</p>
+        <a href="https://wa.me/524611557964?text=Hola%20Vicky%2C%20vi%20tu%20landing%20y%20quiero%20mi%20mentor%C3%ADa%20express" class="btn-wa">💬 Escríbeme por WhatsApp ahora</a>
+        <p style="margin-top:24px; font-size:16px;">Te reviso tu perfil en 15 minutos • Te digo si das el perfil</p>
+    </div>
+
+    <!-- HERRAMIENTAS -->
+    <div class="section">
+        <h2 class="section-title">Empieza hoy con estas herramientas gratuitas</h2>
+        <div class="card-grid">
+            <div class="card">
+                <strong>🧪 Haz el Quiz</strong><br>¿Calificas para ser Au Pair?<br>
+                <a href="./quiz-aupair.html" class="btn-wa">Hacer el Quiz ahora →</a>
+            </div>
+            <div class="card">
+                <strong>🌍 Guía de Destinos</strong><br>USA, Francia y Alemania sin letra chica<br>
+                <a href="./guia-destinos-aupair.html" class="btn-wa">Ver Guía completa →</a>
+            </div>
+            <div class="card">
+                <strong>📋 Checklist de 12 pasos</strong><br>Tu mapa para irte de Au Pair<br>
+                <a href="./checklist-aupair.html" class="btn-wa">Ver Checklist →</a>
+            </div>
+            <div class="card">
+                <strong>💰 Generador de Cotizaciones</strong><br>Cotizaciones personalizadas al instante<br>
+                <a href="./generador-cotizaciones-aupair.html" class="btn-wa">Generar Cotización →</a>
+            </div>
+            <div class="card">
+                <strong>🚀 Mentoría Express</strong><br>15 minutos contigo, resoluciones reales<br>
+                <a href="./mentoria-express.html" class="btn-wa">Agendar Mentoría →</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- AUTORIDAD -->
+    <div class="section">
+        <h2 class="section-title">18 años construyendo confianza</h2>
+        <div style="text-align:center;">
+            <img src="https://i.ibb.co/C3r95hWx/Au-Pair-Care-Logo-Primary.png" alt="AuPairCare" height="80" style="margin:20px 0;">
+            <p style="font-size:17px;">Socia directa de AuPairCare • Viví el programa en Chicago 2006 • Más de 350 casos de éxito</p>
+        </div>
+    </div>
+
+    <!-- CTA FINAL -->
+    <div class="cta-final">
+        <h2>Tu próxima aventura empieza con una sola conversación</h2>
+        <a href="https://wa.me/524611557964?text=Hola%20Vicky%2C%20vi%20tu%20landing%20y%20quiero%20mi%20mentor%C3%ADa%20express" class="btn-wa" style="font-size:20px;">💬 Quiero mi Mentoría Express de 15 minutos</a>
+        <p style="margin-top:40px;">Te digo si das el perfil • Te explico el proceso real • Te acompaño paso a paso</p>
+        <p style="margin-top:60px; font-size:15px;">Con amor y responsabilidad,<br><strong>Vicky</strong><br>Fundadora • AuPair Bajío • Socia directa AuPairCare</p>
+    </div>
+
+</div>
+</body>
+</html>
