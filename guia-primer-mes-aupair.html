@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mi Primer Mes como Au Pair — Vicky | AuPair Bajío</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,400&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#1E0533;
+  --bg2:#2a0845;
+  --magenta:#C0186A;
+  --magenta2:#e91e8c;
+  --teal:#00B4A6;
+  --teal2:#00d4c4;
+  --purple:#3D1F6E;
+  --white:#fff;
+  --white70:rgba(255,255,255,.7);
+  --white40:rgba(255,255,255,.4);
+  --white15:rgba(255,255,255,.15);
+  --glass:rgba(255,255,255,.06);
+  --glass-border:rgba(255,255,255,.1);
+  --font-display:'Fraunces',serif;
+  --font-body:'DM Sans',sans-serif;
+}
+html{font-size:16px;scroll-behavior:smooth}
+body{
+  font-family:var(--font-body);
+  background:var(--bg);
+  color:var(--white);
+  min-height:100vh;
+  overflow-x:hidden;
+  position:relative;
+}
+body::before{
+  content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%;
+  background:
+    radial-gradient(circle at 20% 15%,rgba(192,24,106,.15) 0%,transparent 50%),
+    radial-gradient(circle at 80% 85%,rgba(0,180,166,.1) 0%,transparent 50%),
+    radial-gradient(circle at 60% 40%,rgba(61,31,110,.3) 0%,transparent 60%);
+  z-index:0;pointer-events:none;
+}
+
+.container{max-width:560px;margin:0 auto;padding:16px 16px 48px;position:relative;z-index:1}
+
+/* HEADER */
+.header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:12px 16px;margin-bottom:28px;
+  background:var(--glass);
+  border:1px solid var(--glass-border);
+  border-radius:16px;
+  backdrop-filter:blur(12px);
+}
+.header-left{display:flex;align-items:center;gap:10px}
+.header-photo{width:44px;height:44px;border-radius:50%;border:2px solid var(--teal);object-fit:cover}
+.header-name{font-family:var(--font-display);font-size:.9rem;font-weight:500;line-height:1.2}
+.header-name span{display:block;font-size:.7rem;color:var(--white40);font-family:var(--font-body);font-weight:400;margin-top:2px}
+.header-logo{height:32px;object-fit:contain}
+
+/* HERO */
+.hero{margin-bottom:32px}
+.hero-eyebrow{
+  font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--teal);font-weight:600;margin-bottom:12px;
+}
+.hero-title{
+  font-family:var(--font-display);font-size:clamp(1.7rem,6vw,2.4rem);
+  font-weight:700;line-height:1.1;margin-bottom:16px;
+}
+.hero-title em{font-style:italic;color:var(--magenta2)}
+.hero-sub{color:var(--white70);font-size:.95rem;line-height:1.6;margin-bottom:20px}
+.vicky-note{
+  border-left:3px solid var(--teal);
+  padding:14px 18px;
+  font-style:italic;font-size:.9rem;color:var(--white70);
+  background:rgba(0,180,166,.06);border-radius:0 14px 14px 0;
+  position:relative;
+}
+.vicky-note::before{
+  content:'"';font-family:var(--font-display);font-size:3rem;
+  color:rgba(0,180,166,.2);position:absolute;top:-8px;left:8px;line-height:1;
+}
+.vicky-note strong{color:var(--teal);font-style:normal}
+
+/* PROGRESS DOTS */
+.weeks-nav{
+  display:flex;gap:8px;align-items:center;justify-content:center;
+  margin-bottom:28px;
+}
+.week-dot{
+  width:8px;height:8px;border-radius:50%;
+  background:var(--glass-border);
+  transition:all .3s ease;cursor:pointer;
+}
+.week-dot.active{background:var(--teal);box-shadow:0 0 10px rgba(0,180,166,.5);width:24px;border-radius:4px}
+
+/* ACCORDION / SEMANA CARDS */
+.semana-card{
+  background:var(--glass);
+  border:1px solid var(--glass-border);
+  border-radius:20px;
+  margin-bottom:12px;
+  overflow:hidden;
+  transition:border-color .3s ease;
+}
+.semana-card.open{border-color:rgba(255,255,255,.2)}
+
+.semana-header{
+  display:flex;align-items:center;gap:14px;
+  padding:18px 20px;cursor:pointer;
+  user-select:none;
+  transition:background .2s;
+}
+.semana-header:hover{background:rgba(255,255,255,.04)}
+
+.semana-icon{
+  width:44px;height:44px;border-radius:14px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.3rem;flex-shrink:0;
+  background:var(--glass);
+  border:1px solid var(--glass-border);
+  transition:all .3s ease;
+}
+.semana-card.open .semana-icon{
+  background:linear-gradient(135deg,var(--magenta),var(--magenta2));
+  border-color:transparent;
+  box-shadow:0 4px 20px rgba(192,24,106,.4);
+}
+
+.semana-info{flex:1}
+.semana-num{font-size:.7rem;color:var(--white40);font-weight:600;text-transform:uppercase;letter-spacing:.1em;margin-bottom:2px}
+.semana-title{font-family:var(--font-display);font-size:1rem;font-weight:600;color:var(--white)}
+
+.semana-chevron{
+  font-size:.8rem;color:var(--white40);
+  transition:transform .3s ease;flex-shrink:0;
+}
+.semana-card.open .semana-chevron{transform:rotate(180deg);color:var(--teal)}
+
+.semana-body{
+  max-height:0;overflow:hidden;
+  transition:max-height .5s cubic-bezier(0.4,0,0.2,1);
+}
+.semana-card.open .semana-body{max-height:1200px}
+
+.semana-content{padding:0 20px 24px}
+
+.semana-divider{height:1px;background:var(--glass-border);margin-bottom:20px}
+
+/* Content blocks */
+.block-title{
+  font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;
+  color:var(--teal);margin-bottom:10px;
+}
+
+.vivir-list{list-style:none;margin-bottom:20px}
+.vivir-list li{
+  display:flex;align-items:flex-start;gap:10px;
+  font-size:.9rem;color:var(--white70);line-height:1.5;
+  padding:6px 0;border-bottom:1px solid rgba(255,255,255,.04);
+}
+.vivir-list li:last-child{border-bottom:none}
+.vivir-list li::before{content:'→';color:var(--teal);font-size:.8rem;flex-shrink:0;margin-top:2px}
+
+.sentir-list{list-style:none;margin-bottom:20px}
+.sentir-list li{
+  display:flex;align-items:flex-start;gap:10px;
+  font-size:.9rem;color:var(--white70);line-height:1.5;
+  padding:8px 12px;margin-bottom:8px;
+  background:rgba(255,255,255,.04);border-radius:10px;
+  font-style:italic;
+}
+
+.consejo-vicky{
+  background:linear-gradient(135deg,rgba(192,24,106,.1),rgba(61,31,110,.15));
+  border:1px solid rgba(192,24,106,.2);
+  border-radius:14px;padding:16px;
+  font-size:.88rem;color:var(--white70);line-height:1.6;
+}
+.consejo-vicky .firma{
+  display:block;margin-top:10px;
+  font-family:var(--font-display);font-size:.85rem;
+  color:var(--magenta2);font-style:italic;
+}
+
+/* TIPS SECTION */
+.tips-section{
+  background:var(--glass);border:1px solid var(--glass-border);
+  border-radius:20px;padding:24px;margin-bottom:32px;
+}
+.tips-title{
+  font-family:var(--font-display);font-size:1.2rem;font-weight:700;
+  margin-bottom:20px;
+  background:linear-gradient(135deg,var(--white),var(--teal2));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.tip-item{
+  display:flex;align-items:flex-start;gap:14px;
+  padding:12px 0;border-bottom:1px solid rgba(255,255,255,.06);
+}
+.tip-item:last-child{border-bottom:none}
+.tip-num{
+  width:28px;height:28px;border-radius:8px;flex-shrink:0;
+  background:linear-gradient(135deg,var(--magenta),var(--magenta2));
+  display:flex;align-items:center;justify-content:center;
+  font-size:.75rem;font-weight:700;color:var(--white);
+}
+.tip-text{font-size:.9rem;color:var(--white70);line-height:1.5}
+
+/* CTA SECTION */
+.cta-section{
+  background:linear-gradient(135deg,rgba(192,24,106,.15),rgba(61,31,110,.2));
+  border:1px solid rgba(192,24,106,.25);
+  border-radius:20px;padding:28px 24px;
+  text-align:center;
+}
+.cta-title{
+  font-family:var(--font-display);font-size:1.3rem;font-weight:700;
+  line-height:1.2;margin-bottom:8px;color:var(--white);
+}
+.cta-sub{font-size:.9rem;color:var(--white70);margin-bottom:24px;line-height:1.5}
+
+.btn{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  width:100%;padding:16px 24px;border:none;border-radius:14px;
+  font-family:var(--font-body);font-size:.95rem;font-weight:700;
+  color:var(--white);cursor:pointer;text-decoration:none;
+  transition:all .25s ease;margin-bottom:12px;
+}
+.btn-purple{
+  background:linear-gradient(135deg,var(--purple),#5B2FA0);
+  box-shadow:0 4px 24px rgba(61,31,110,.5);
+}
+.btn-purple:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(61,31,110,.6)}
+
+.btn-wa{
+  background:#25D366;
+  box-shadow:0 4px 24px rgba(37,211,102,.3);
+}
+.btn-wa:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(37,211,102,.4)}
+
+/* FOOTER */
+.footer{
+  text-align:center;padding:24px 0 8px;
+  font-size:.72rem;color:var(--white40);line-height:1.5;
+}
+
+/* Week color accents */
+.semana-card[data-week="1"].open{border-color:rgba(0,180,166,.3)}
+.semana-card[data-week="2"].open{border-color:rgba(192,24,106,.3)}
+.semana-card[data-week="3"].open{border-color:rgba(245,200,66,.3)}
+.semana-card[data-week="4"].open{border-color:rgba(0,180,166,.4)}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-left">
+      <img src="https://i.ibb.co/BK2TzLZD/Whats-App-Image-2026-04-03-at-9-00-50-AM.jpg" alt="Vicky" class="header-photo">
+      <div class="header-name">Vicky<span>AuPair Bajío</span></div>
+    </div>
+    <img src="https://i.ibb.co/C3r95hWx/Au-Pair-Care-Logo-Primary.png" alt="AuPairCare" class="header-logo">
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <p class="hero-eyebrow">✦ Guía de nutrición — Lo que nadie te dice</p>
+    <h1 class="hero-title">Tu primer mes<br>como Au Pair:<br><em>semana por semana</em></h1>
+    <p class="hero-sub">Esto es lo que vas a vivir. Sin filtros, sin adornos. Para que llegues preparada y no te agarre de sorpresa nada.</p>
+    <div class="vicky-note">
+      Yo viví esto en Chicago en 2006. Y desde entonces he acompañado a más de 350 chavas en su primer mes. Sé exactamente qué se siente y qué esperar.
+      <strong class="firma">— Vicky</strong>
+    </div>
+  </div>
+
+  <!-- WEEK DOTS -->
+  <div class="weeks-nav" id="weeksDots">
+    <div class="week-dot active" onclick="scrollToWeek(1)" title="Semana 1"></div>
+    <div class="week-dot" onclick="scrollToWeek(2)" title="Semana 2"></div>
+    <div class="week-dot" onclick="scrollToWeek(3)" title="Semana 3"></div>
+    <div class="week-dot" onclick="scrollToWeek(4)" title="Semana 4"></div>
+  </div>
+
+  <!-- SEMANA 1 -->
+  <div class="semana-card open" data-week="1" id="semana-1">
+    <div class="semana-header" onclick="toggleSemana(1)">
+      <div class="semana-icon">✈️</div>
+      <div class="semana-info">
+        <p class="semana-num">Semana 1</p>
+        <p class="semana-title">Llegada y primeras impresiones</p>
+      </div>
+      <span class="semana-chevron">▼</span>
+    </div>
+    <div class="semana-body">
+      <div class="semana-content">
+        <div class="semana-divider"></div>
+        <p class="block-title">Lo que vas a vivir</p>
+        <ul class="vivir-list">
+          <li>Llegas al aeropuerto. Tu familia host te recoge. Todo se siente irreal.</li>
+          <li>Conoces tu cuarto, la casa, el barrio. Todo huele diferente, suena diferente.</li>
+          <li>Los primeros días con los niños son de observación. Tú los conoces, ellos te conocen.</li>
+          <li>Jet lag. Cansancio. Emoción. Todo junto.</li>
+        </ul>
+        <p class="block-title">Lo que es normal sentir</p>
+        <ul class="sentir-list">
+          <li>"¿Qué hice? ¿Por qué me vine?"</li>
+          <li>Extrañar tu casa, tu comida, tu familia</li>
+          <li>Perderte con el idioma aunque pensabas que tu inglés era suficiente</li>
+        </ul>
+        <div class="consejo-vicky">
+          "Los primeros 3 días son los más intensos. Todas, <em>TODAS</em> mis chavas han tenido ese momento de '¿qué hago aquí?'. Es completamente normal. No significa que tomaste una mala decisión. Significa que estás creciendo."
+          <span class="firma">— Vicky</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEMANA 2 -->
+  <div class="semana-card" data-week="2" id="semana-2">
+    <div class="semana-header" onclick="toggleSemana(2)">
+      <div class="semana-icon">🗓️</div>
+      <div class="semana-info">
+        <p class="semana-num">Semana 2</p>
+        <p class="semana-title">La rutina empieza a formarse</p>
+      </div>
+      <span class="semana-chevron">▼</span>
+    </div>
+    <div class="semana-body">
+      <div class="semana-content">
+        <div class="semana-divider"></div>
+        <p class="block-title">Lo que vas a vivir</p>
+        <ul class="vivir-list">
+          <li>Ya sabes a qué hora se despiertan los niños, qué desayunan, a dónde los llevas.</li>
+          <li>Empiezas a manejar (en USA) o a usar el transporte con más confianza.</li>
+          <li>La familia te da más responsabilidades poco a poco.</li>
+          <li>Conoces a otras Au Pairs de tu zona — AuPairCare organiza encuentros.</li>
+        </ul>
+        <p class="block-title">Lo que es normal sentir</p>
+        <ul class="sentir-list">
+          <li>Más tranquilidad pero todavía momentos de nostalgia</li>
+          <li>Frustración con el idioma — entiendes más de lo que puedes expresar</li>
+          <li>Orgullo pequeño: "hoy resolví algo sola"</li>
+        </ul>
+        <div class="consejo-vicky">
+          "La semana 2 es cuando empiezas a tener mini victorias. La primera vez que llevas a los niños a la escuela sola. La primera vez que entiendes un chiste en inglés. Esos momentos son los que te van a dar confianza."
+          <span class="firma">— Vicky</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEMANA 3 -->
+  <div class="semana-card" data-week="3" id="semana-3">
+    <div class="semana-header" onclick="toggleSemana(3)">
+      <div class="semana-icon">💪</div>
+      <div class="semana-info">
+        <p class="semana-num">Semana 3</p>
+        <p class="semana-title">Te sientes más tú</p>
+      </div>
+      <span class="semana-chevron">▼</span>
+    </div>
+    <div class="semana-body">
+      <div class="semana-content">
+        <div class="semana-divider"></div>
+        <p class="block-title">Lo que vas a vivir</p>
+        <ul class="vivir-list">
+          <li>La rutina ya no se siente ajena. Es TU rutina.</li>
+          <li>Los niños empiezan a buscarte, a pedirte cosas, a encariñarse.</li>
+          <li>Haces planes con otras Au Pairs para el fin de semana.</li>
+          <li>Hablas con tu familia en México y ya no lloras — les cuentas cosas padres.</li>
+        </ul>
+        <p class="block-title">Lo que es normal sentir</p>
+        <ul class="sentir-list">
+          <li>Confianza creciente — algo que no tenías antes</li>
+          <li>Momentos de "wow, estoy viviendo en otro país"</li>
+          <li>Todavía hay días difíciles, pero son menos</li>
+        </ul>
+        <div class="consejo-vicky">
+          "Semana 3 es cuando mis chavas me mandan su primer mensaje de 'Vicky, estoy feliz'. No todas, pero la mayoría. Las que todavía están batallando, las acompaño más de cerca. Nadie se queda sola."
+          <span class="firma">— Vicky</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEMANA 4 -->
+  <div class="semana-card" data-week="4" id="semana-4">
+    <div class="semana-header" onclick="toggleSemana(4)">
+      <div class="semana-icon">🌟</div>
+      <div class="semana-info">
+        <p class="semana-num">Semana 4</p>
+        <p class="semana-title">Ya eres Au Pair</p>
+      </div>
+      <span class="semana-chevron">▼</span>
+    </div>
+    <div class="semana-body">
+      <div class="semana-content">
+        <div class="semana-divider"></div>
+        <p class="block-title">Lo que vas a vivir</p>
+        <ul class="vivir-list">
+          <li>Manejas tu horario, tus días libres, tu dinero en dólares.</li>
+          <li>Los niños te quieren. La familia confía en ti.</li>
+          <li>Planeas tu primer viaje de fin de semana con otras Au Pairs.</li>
+          <li>Empiezas a pensar en los cursos universitarios incluidos con AuPairCare.</li>
+        </ul>
+        <p class="block-title">Lo que es normal sentir</p>
+        <ul class="sentir-list">
+          <li>"No puedo creer que hace un mes estaba en México"</li>
+          <li>Independencia real — probablemente por primera vez en tu vida</li>
+          <li>Ganas de contarle a todas tus amigas que hagan lo mismo</li>
+        </ul>
+        <div class="consejo-vicky">
+          "El primer mes es el más difícil y el más transformador. Después de eso, todo fluye. He visto a chavas que llegaron temblando de miedo y al mes estaban organizando roadtrips. Tú puedes ser una de ellas."
+          <span class="firma">— Vicky</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TIPS -->
+  <div class="tips-section" style="margin-top:24px">
+    <p class="tips-title">Lo que nadie te dice (pero yo sí)</p>
+    <div class="tip-item">
+      <div class="tip-num">1</div>
+      <p class="tip-text">Lleva fotos de tu familia. En los días difíciles, ayudan.</p>
+    </div>
+    <div class="tip-item">
+      <div class="tip-num">2</div>
+      <p class="tip-text">No compares tu experiencia con la de otras Au Pairs en redes. Cada proceso es diferente.</p>
+    </div>
+    <div class="tip-item">
+      <div class="tip-num">3</div>
+      <p class="tip-text">Escríbele a Vicky cuando necesites. Para eso estoy. No tienes que resolverlo todo sola.</p>
+    </div>
+    <div class="tip-item">
+      <div class="tip-num">4</div>
+      <p class="tip-text">Los niños van a probar tus límites las primeras semanas. Es normal. Sé firme y cariñosa.</p>
+    </div>
+    <div class="tip-item">
+      <div class="tip-num">5</div>
+      <p class="tip-text">Tu inglés va a mejorar más en el primer mes que en años de clase. Solo por vivir ahí.</p>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <p class="cta-title">¿Lista para vivir<br>tu primer mes?</p>
+    <p class="cta-sub">El primer paso es hablar conmigo. Sin compromiso, sin presión. Solo una plática honesta.</p>
+    <a class="btn btn-purple" href="https://tally.so/r/EkJZBB?origen=GuiaPrimerMes" target="_blank">
+      📋 Registrar mis datos — Vicky me contacta
+    </a>
+    <a class="btn btn-wa" href="https://wa.me/524611557964?text=Hola%20Vicky%2C%20le%C3%AD%20la%20gu%C3%ADa%20del%20primer%20mes%20y%20quiero%20saber%20m%C3%A1s%20sobre%20el%20programa%20Au%20Pair" target="_blank">
+      💬 Hablar con Vicky ahora
+    </a>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">Con cariño y responsabilidad, Vicky • Fundadora AuPair Bajío • Socia Directa de AuPairCare</div>
+
+</div>
+
+<script>
+var openWeeks = [1]; // Semana 1 abre por defecto
+
+function toggleSemana(num) {
+  var card = document.getElementById('semana-' + num);
+  var isOpen = card.classList.contains('open');
+  
+  // Close all
+  for (var i = 1; i <= 4; i++) {
+    document.getElementById('semana-' + i).classList.remove('open');
+  }
+  
+  // Open clicked if it was closed
+  if (!isOpen) {
+    card.classList.add('open');
+    updateDots(num);
+  } else {
+    updateDots(0);
+  }
+}
+
+function updateDots(activeNum) {
+  var dots = document.querySelectorAll('.week-dot');
+  dots.forEach(function(d, i) {
+    d.classList.toggle('active', i + 1 === activeNum);
+  });
+}
+
+function scrollToWeek(num) {
+  var card = document.getElementById('semana-' + num);
+  
+  // Close all, open this one
+  for (var i = 1; i <= 4; i++) {
+    document.getElementById('semana-' + i).classList.remove('open');
+  }
+  card.classList.add('open');
+  updateDots(num);
+  
+  setTimeout(function() {
+    card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 100);
+}
+
+// Sync dots on scroll
+var observer = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting && entry.target.classList.contains('open')) {
+      var num = parseInt(entry.target.getAttribute('data-week'));
+      updateDots(num);
+    }
+  });
+}, { threshold: 0.5 });
+
+for (var i = 1; i <= 4; i++) {
+  observer.observe(document.getElementById('semana-' + i));
+}
+</script>
+</body>
+</html>

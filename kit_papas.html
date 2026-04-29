@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kit para Papás — AuPair Bajío</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FAF8FF;
+  --purple:#3D1F6E;
+  --purple-light:#5B3A94;
+  --purple-soft:rgba(61,31,110,.06);
+  --purple-border:rgba(61,31,110,.1);
+  --magenta:#D63384;
+  --magenta2:#e84393;
+  --teal:#00B4A6;
+  --teal2:#00d4c4;
+  --white:#fff;
+  --text:#2D2040;
+  --text70:rgba(45,32,64,.7);
+  --text40:rgba(45,32,64,.4);
+  --font-display:'Playfair Display',serif;
+  --font-body:'DM Sans',sans-serif;
+  --shadow-sm:0 2px 8px rgba(61,31,110,.06);
+  --shadow-md:0 4px 20px rgba(61,31,110,.08);
+  --shadow-lg:0 8px 32px rgba(61,31,110,.12);
+  --radius:16px;
+}
+html{font-size:16px;scroll-behavior:smooth}
+body{
+  font-family:var(--font-body);
+  background:var(--bg);
+  color:var(--text);
+  min-height:100vh;
+  overflow-x:hidden;
+  line-height:1.6;
+}
+
+.container{max-width:800px;margin:0 auto;padding:0 16px}
+
+/* HEADER */
+.header{
+  background:var(--purple);
+  padding:14px 20px;
+  position:sticky;top:0;z-index:100;
+  box-shadow:0 4px 20px rgba(61,31,110,.25);
+}
+.header-inner{
+  max-width:800px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.header-left{display:flex;align-items:center;gap:10px}
+.header-photo{
+  width:42px;height:42px;border-radius:50%;
+  border:2px solid var(--teal);
+  object-fit:cover;
+}
+.header-name{
+  font-family:var(--font-display);font-size:.9rem;font-weight:500;
+  color:#fff;line-height:1.2;
+}
+.header-name span{
+  display:block;font-size:.7rem;color:rgba(255,255,255,.6);
+  font-family:var(--font-body);font-weight:400;margin-top:2px;
+}
+.header-logo{height:30px;object-fit:contain}
+
+/* HERO */
+.hero{
+  padding:48px 20px 40px;
+  text-align:center;
+  background:linear-gradient(180deg,rgba(61,31,110,.04) 0%,transparent 100%);
+}
+.hero-title{
+  font-family:var(--font-display);font-size:1.8rem;font-weight:700;
+  line-height:1.25;margin-bottom:16px;color:var(--purple);
+}
+.hero-sub{
+  color:var(--text70);font-size:1rem;line-height:1.6;
+  max-width:600px;margin:0 auto 20px;
+}
+.hero-sig{
+  font-size:.85rem;color:var(--text40);
+  font-style:italic;
+  border-top:1px solid var(--purple-border);
+  padding-top:16px;max-width:500px;margin:0 auto;
+}
+
+/* SECTIONS */
+.section{padding:40px 0}
+.section-title{
+  font-family:var(--font-display);font-size:1.4rem;font-weight:700;
+  color:var(--purple);margin-bottom:20px;text-align:center;
+}
+.section-divider{
+  width:48px;height:3px;
+  background:linear-gradient(90deg,var(--magenta),var(--teal));
+  border-radius:99px;margin:0 auto 24px;
+}
+
+/* ABOUT CARD */
+.about-card{
+  background:var(--white);
+  border:1px solid var(--purple-border);
+  border-radius:var(--radius);
+  padding:28px 24px;
+  box-shadow:var(--shadow-sm);
+  position:relative;
+  overflow:hidden;
+}
+.about-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--purple),var(--magenta),var(--teal));
+}
+.about-card p{
+  color:var(--text70);font-size:.95rem;line-height:1.7;margin-bottom:14px;
+}
+.about-card p:last-child{margin-bottom:0}
+.about-highlight{
+  color:var(--purple);font-weight:600;
+}
+
+/* ACCORDION */
+.accordion{display:flex;flex-direction:column;gap:12px}
+.accordion-item{
+  background:var(--white);
+  border:1px solid var(--purple-border);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow-sm);
+  overflow:hidden;
+  transition:box-shadow .3s ease;
+}
+.accordion-item.open{box-shadow:var(--shadow-md)}
+.accordion-trigger{
+  width:100%;padding:20px 24px;
+  background:none;border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  font-family:var(--font-display);font-size:1.05rem;font-weight:600;
+  color:var(--purple);text-align:left;
+  transition:background .2s;
+}
+.accordion-trigger:hover{background:var(--purple-soft)}
+.accordion-icon{
+  width:28px;height:28px;border-radius:50%;
+  background:var(--purple-soft);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;transition:all .3s ease;
+  font-size:.85rem;color:var(--purple);
+}
+.accordion-item.open .accordion-icon{
+  background:var(--purple);color:#fff;
+  transform:rotate(180deg);
+}
+.accordion-body{
+  max-height:0;overflow:hidden;
+  transition:max-height .4s ease, padding .3s ease;
+}
+.accordion-item.open .accordion-body{
+  max-height:800px;
+}
+.accordion-content{
+  padding:0 24px 24px;
+  color:var(--text70);font-size:.92rem;line-height:1.7;
+}
+.accordion-content p{margin-bottom:12px}
+.accordion-content p:last-child{margin-bottom:0}
+.check-list{list-style:none;padding:0;margin:12px 0}
+.check-list li{
+  padding:6px 0 6px 28px;position:relative;
+  font-size:.92rem;color:var(--text70);
+}
+.check-list li::before{
+  content:'✓';position:absolute;left:0;top:6px;
+  color:var(--teal);font-weight:700;font-size:1rem;
+}
+.accordion-content .accent{
+  color:var(--purple);font-weight:600;
+}
+
+/* TESTIMONIALS */
+.testimonials-grid{
+  display:grid;grid-template-columns:1fr;gap:16px;
+}
+@media(min-width:600px){
+  .testimonials-grid{grid-template-columns:repeat(3,1fr)}
+}
+.testimonial-card{
+  background:var(--white);
+  border:1px solid var(--purple-border);
+  border-radius:var(--radius);
+  padding:24px 20px;
+  box-shadow:var(--shadow-sm);
+  text-align:center;
+}
+.testimonial-photo{
+  width:56px;height:56px;border-radius:50%;
+  background:var(--purple-soft);
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 12px;font-size:1.5rem;
+  border:2px solid var(--purple-border);
+}
+.testimonial-quote{
+  font-style:italic;font-size:.9rem;color:var(--text70);
+  margin-bottom:12px;line-height:1.5;
+}
+.testimonial-name{
+  font-size:.8rem;color:var(--text40);font-weight:600;
+}
+
+/* CTA SECTION */
+.cta-section{
+  background:linear-gradient(135deg,var(--purple) 0%,var(--purple-light) 100%);
+  border-radius:20px;
+  padding:36px 28px;
+  text-align:center;
+  margin:40px 0;
+  box-shadow:var(--shadow-lg);
+  position:relative;overflow:hidden;
+}
+.cta-section::before{
+  content:'';position:absolute;top:-40%;right:-20%;
+  width:300px;height:300px;border-radius:50%;
+  background:rgba(0,180,166,.1);pointer-events:none;
+}
+.cta-section::after{
+  content:'';position:absolute;bottom:-30%;left:-10%;
+  width:200px;height:200px;border-radius:50%;
+  background:rgba(214,51,132,.1);pointer-events:none;
+}
+.cta-text{
+  color:rgba(255,255,255,.9);font-size:.95rem;line-height:1.7;
+  margin-bottom:8px;position:relative;z-index:1;
+}
+.cta-text strong{color:#fff}
+.cta-text-emphasis{
+  font-family:var(--font-display);font-size:1.1rem;
+  color:#fff;font-weight:600;margin-bottom:28px;
+  position:relative;z-index:1;
+}
+.btn-cta{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  width:100%;max-width:400px;padding:16px 28px;
+  border:none;border-radius:14px;
+  font-family:var(--font-body);font-size:1rem;font-weight:600;
+  color:#fff;cursor:pointer;text-decoration:none;
+  transition:all .25s ease;position:relative;z-index:1;
+  margin-bottom:12px;
+}
+.btn-primary{
+  background:linear-gradient(135deg,var(--magenta),var(--magenta2));
+  box-shadow:0 4px 20px rgba(214,51,132,.4);
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(214,51,132,.5)}
+.btn-secondary{
+  background:rgba(255,255,255,.12);
+  border:1.5px solid rgba(255,255,255,.25);
+  box-shadow:none;
+}
+.btn-secondary:hover{background:rgba(255,255,255,.2);transform:translateY(-2px)}
+
+/* FOOTER */
+.footer{
+  text-align:center;padding:32px 16px 20px;
+  font-size:.8rem;color:var(--text40);line-height:1.5;
+  border-top:1px solid var(--purple-border);
+}
+
+/* MOBILE ADJUSTMENTS */
+@media(max-width:480px){
+  .hero-title{font-size:1.5rem}
+  .hero{padding:36px 16px 32px}
+  .section{padding:32px 0}
+  .accordion-trigger{padding:16px 18px;font-size:.98rem}
+  .accordion-content{padding:0 18px 20px}
+  .cta-section{padding:28px 20px;border-radius:16px;margin:32px 0}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-inner">
+    <div class="header-left">
+      <img src="https://i.ibb.co/BK2TzLZD/Whats-App-Image-2026-04-03-at-9-00-50-AM.jpg" alt="Vicky" class="header-photo">
+      <div class="header-name">Vicky<span>AuPair Bajío</span></div>
+    </div>
+    <img src="https://i.ibb.co/C3r95hWx/Au-Pair-Care-Logo-Primary.png" alt="AuPairCare" class="header-logo">
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- HERO -->
+  <div class="hero">
+    <h1 class="hero-title">Papá, mamá: lo que necesitan saber antes de decir "no"</h1>
+    <p class="hero-sub">Esta guía es para ustedes. Sé que tienen dudas y preocupaciones. Es normal. Aquí les explico todo con datos reales, no con promesas.</p>
+    <p class="hero-sig">— Vicky | Fundadora AuPair Bajío | 18 años acompañando familias | Socia directa de AuPairCare</p>
+  </div>
+
+  <!-- QUIÉN SOY -->
+  <div class="section">
+    <h2 class="section-title">¿Quién soy y por qué pueden confiar en mí?</h2>
+    <div class="section-divider"></div>
+    <div class="about-card">
+      <p>Mi nombre es Vicky. En 2006, yo estuve exactamente donde está su hija hoy: quería irme de Au Pair y mis papás tenían las mismas dudas que ustedes. Me fui a Chicago. <span class="about-highlight">Fue la mejor decisión de mi vida.</span></p>
+      <p>Desde 2008 me dedico a esto. He acompañado a <span class="about-highlight">más de 350 jóvenes</span> en su proceso. No soy una agencia en internet — tengo <span class="about-highlight">oficina en Celaya, Guanajuato</span>, y trabajo directamente con cada familia. Soy socia directa de <span class="about-highlight">AuPairCare</span>, la organización líder en Estados Unidos, regulada por el Departamento de Estado.</p>
+      <p>No le digo que sí a todas. Si su hija no da el perfil, yo soy la primera en decírselo. Pero si está aquí, es porque tiene potencial.</p>
+    </div>
+  </div>
+
+  <!-- LAS 4 PREGUNTAS -->
+  <div class="section">
+    <h2 class="section-title">Sus 4 preguntas más importantes</h2>
+    <div class="section-divider"></div>
+
+    <div class="accordion">
+
+      <!-- P1 -->
+      <div class="accordion-item">
+        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+          <span>¿Es seguro?</span>
+          <span class="accordion-icon">▼</span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-content">
+            <p>El programa Au Pair en Estados Unidos <span class="accent">NO es un trabajo informal</span>. Está regulado por el Departamento de Estado de EE.UU. Eso significa:</p>
+            <ul class="check-list">
+              <li>Visa J-1 oficial (no es visa de turista ni permiso informal)</li>
+              <li>La familia anfitriona pasa por verificación de antecedentes</li>
+              <li>AuPairCare tiene coordinadores locales disponibles 24/7</li>
+              <li>Seguro médico completo incluido durante todo el año</li>
+              <li>Línea de emergencia directa si algo pasa</li>
+            </ul>
+            <p>Y además, yo la acompaño antes, durante y después. <span class="accent">No la dejo sola en ningún momento.</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- P2 -->
+      <div class="accordion-item">
+        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+          <span>¿Cuánto cuesta todo?</span>
+          <span class="accordion-icon">▼</span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-content">
+            <p>Entiendo que es una inversión importante. Pero vean los números completos:</p>
+            <ul class="check-list">
+              <li>Salario semanal en dólares (mínimo $199.75 USD/semana)</li>
+              <li>Hospedaje y comida incluidos — no gasta en renta ni comida durante un año</li>
+              <li>Seguro médico incluido</li>
+              <li>Hasta $500 USD para cursos universitarios en EE.UU.</li>
+              <li>Vuelo de ida y vuelta incluido (con AuPairCare)</li>
+            </ul>
+            <p>En la práctica, muchas chavas ahorran entre <span class="accent">$5,000 y $8,000 dólares</span> en el año. No es un gasto — es una inversión que se paga sola.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- P3 -->
+      <div class="accordion-item">
+        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+          <span>¿Quién la cuida allá?</span>
+          <span class="accordion-icon">▼</span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-content">
+            <p>Su hija no se va sola. Este es el sistema de respaldo:</p>
+            <ul class="check-list">
+              <li><span class="accent">Yo:</span> la acompaño antes, durante y después. Puede escribirme en cualquier momento.</li>
+              <li><span class="accent">AuPairCare:</span> tiene un coordinador local asignado en su ciudad de destino.</li>
+              <li><span class="accent">La familia anfitriona:</span> pasa por un proceso de selección riguroso.</li>
+              <li><span class="accent">Comunidad Au Pair:</span> grupos de chavas mexicanas y latinas en cada ciudad.</li>
+            </ul>
+            <p>Y si algo no funciona con la familia, existe un proceso formal de rematch. <span class="accent">No se queda en la calle.</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- P4 -->
+      <div class="accordion-item">
+        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+          <span>¿Y si le va mal?</span>
+          <span class="accordion-icon">▼</span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-content">
+            <p>Voy a ser directa: no a todas les va perfecto desde el día uno. Hay adaptación, hay nostalgia, hay días difíciles. Eso es normal.</p>
+            <p>Pero hay una diferencia enorme entre irse sola y irse acompañada. Conmigo:</p>
+            <ul class="check-list">
+              <li>Preparamos a su hija ANTES de irse para que sepa qué esperar</li>
+              <li>Si tiene un problema con la familia, intervengo personalmente</li>
+              <li>Si necesita cambiar de familia, la acompaño en el proceso de rematch</li>
+              <li>Si en algún momento decide regresar, también la acompaño</li>
+            </ul>
+            <p>En 18 años y más de 350 procesos, la enorme mayoría no solo completan su año — <span class="accent">muchas extienden a un segundo año.</span></p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TESTIMONIOS -->
+  <div class="section">
+    <h2 class="section-title">Lo que otras familias dicen</h2>
+    <div class="section-divider"></div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-photo">👩‍👧</div>
+        <p class="testimonial-quote">"[Testimonio pendiente — Vicky agregará testimonios reales de papás]"</p>
+        <p class="testimonial-name">Nombre · Ciudad</p>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-photo">👨‍👧</div>
+        <p class="testimonial-quote">"[Testimonio pendiente — Vicky agregará testimonios reales de papás]"</p>
+        <p class="testimonial-name">Nombre · Ciudad</p>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-photo">👪</div>
+        <p class="testimonial-quote">"[Testimonio pendiente — Vicky agregará testimonios reales de papás]"</p>
+        <p class="testimonial-name">Nombre · Ciudad</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA SECTION -->
+  <div class="cta-section">
+    <p class="cta-text">Sé que dejar ir a una hija no es fácil. Pero a veces, lo mejor que podemos hacer como papás es <strong>confiar en ellas y darles las herramientas para crecer.</strong></p>
+    <p class="cta-text">Yo no les pido que confíen a ciegas. Les pido <strong>15 minutos</strong> de su tiempo para platicar, resolver sus dudas, y que conozcan cómo trabajo. Sin compromiso.</p>
+    <p class="cta-text-emphasis">Si su hija llegó hasta aquí, es porque esto es importante para ella. Déjenla intentarlo. Yo la cuido.</p>
+    <a class="btn-cta btn-primary" href="https://wa.me/524611557964?text=Hola%20Vicky%2C%20soy%20pap%C3%A1%2Fmam%C3%A1%20de%20una%20chava%20interesada%20en%20el%20programa%20Au%20Pair.%20Quiero%20resolver%20mis%20dudas." target="_blank">Quiero hablar con Vicky →</a>
+    <a class="btn-cta btn-secondary" href="https://wa.me/524611557964?text=Hola%20Vicky%2C%20mi%20hija%20quiere%20agendar%20una%20mentor%C3%ADa%20express%20para%20el%20programa%20Au%20Pair." target="_blank">Que mi hija agende una mentoría express →</a>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  Con cariño y responsabilidad, Vicky • Fundadora AuPair Bajío • Socia Directa de AuPairCare
+</div>
+
+<script>
+function toggleAccordion(trigger){
+  var item = trigger.parentElement;
+  var wasOpen = item.classList.contains('open');
+  // Close all
+  document.querySelectorAll('.accordion-item').forEach(function(el){
+    el.classList.remove('open');
+  });
+  // Open clicked if it was closed
+  if(!wasOpen){
+    item.classList.add('open');
+    // Smooth scroll to it
+    setTimeout(function(){
+      item.scrollIntoView({behavior:'smooth',block:'nearest'});
+    },100);
+  }
+}
+</script>
+</body>
+</html>
